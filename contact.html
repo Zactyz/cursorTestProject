@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ciple</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .contact-section {
+            padding: 10rem 0 6rem;
+            background-color: var(--white);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            font-size: 1.3rem;
+            color: var(--primary-purple);
+            flex-shrink: 0;
+        }
+        
+        .contact-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .contact-text p {
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-purple);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background: var(--gradient-purple);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(103,45,144,0.2);
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(103,45,144,0.3);
+        }
+        
+        .status-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .status-message.success {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #2e7d32;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            display: block;
+        }
+        
+        .status-message.error {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: #d32f2f;
+            border: 1px solid rgba(244, 67, 54, 0.3);
+            display: block;
+        }
+        
+        @media (max-width: 991px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/ciple-logo.svg" alt="Ciple Logo">
+                <span>Ciple</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#transform">Features</a>
+                <a href="index.html#studies">Bible Studies</a>
+                <a href="index.html#prayer">Prayer Wall</a>
+                <a href="index.html#encouragement">Daily Encouragement</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+            <a href="https://ciple.glide.page" class="nav-cta">Get Started for Free</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html#transform">Features</a>
+            <a href="index.html#studies">Bible Studies</a>
+            <a href="index.html#prayer">Prayer Wall</a>
+            <a href="index.html#encouragement">Daily Encouragement</a>
+            <a href="about.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+            <a href="https://ciple.glide.page" class="mobile-cta">Get Started for Free</a>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 data-aos="fade-up">Get in Touch</h2>
+                <p data-aos="fade-up" data-aos-delay="100">Have questions about Ciple? Want to partner with us? We're here to help.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-up" data-aos-delay="200">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Email Us</h3>
+                            <p>zac.at.ciple@gmail.com</p>
+                            <p>We typically respond within 24 hours.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Our Mission</h3>
+                            <p>We're on a mission to empower believers worldwide with accessible, AI-powered discipleship tools that deepen faith and strengthen communities.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h3>Follow Us</h3>
+                            <div class="social-icons" style="margin-top: 1rem;">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+                    <form id="contactForm" action="https://formspree.io/f/zac.at.ciple@gmail.com" method="POST">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">Send Message</button>
+                        
+                        <div class="status-message" id="statusMessage"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/ciple-logo.svg" alt="Ciple Logo">
+                        <span>Ciple</span>
+                    </a>
+                    <p>AI-powered discipleship tools for your faith journey.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>Features</h4>
+                        <a href="index.html#studies">Bible Studies</a>
+                        <a href="index.html#prayer">Prayer Wall</a>
+                        <a href="index.html#encouragement">Daily Encouragement</a>
+                        <a href="features.html">All Features</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="mission.html">Our Mission</a>
+                        <a href="team.html">Team</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Resources</h4>
+                        <a href="blog.html">Blog</a>
+                        <a href="faq.html">FAQ</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                </div>
+                <div class="subscribe-form">
+                    <h4>Subscribe to Updates</h4>
+                    <p>Stay updated with the latest features and news.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Ciple. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Contact form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(contactForm);
+                    const data = Object.fromEntries(formData.entries());
+                    
+                    // Send to Formspree (which will forward to the email)
+                    fetch('https://formspree.io/f/zac.at.ciple@gmail.com', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            statusMessage.textContent = 'Message sent successfully! We\'ll get back to you soon.';
+                            statusMessage.className = 'status-message success';
+                            contactForm.reset();
+                        } else {
+                            response.json().then(data => {
+                                statusMessage.textContent = data.error || 'Something went wrong. Please try again later.';
+                                statusMessage.className = 'status-message error';
+                            });
+                        }
+                    })
+                    .catch(error => {
+                        statusMessage.textContent = 'An error occurred. Please try again later.';
+                        statusMessage.className = 'status-message error';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

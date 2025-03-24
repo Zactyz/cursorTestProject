@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Ciple</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .donate-hero {
+            padding: 10rem 0 6rem;
+            background: linear-gradient(135deg, var(--light-purple) 0%, var(--muted-purple) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .donation-options {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+        
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .donate-option {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .donate-option:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+        }
+        
+        .donate-amount {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+        
+        .donate-frequency {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .donate-feature {
+            text-align: left;
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #444;
+        }
+        
+        .donate-feature:before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--primary-purple);
+        }
+        
+        .donate-cta {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--gradient-purple);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(103,45,144,0.2);
+            margin-top: auto;
+        }
+        
+        .donate-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(103,45,144,0.3);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary-purple);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+        
+        .custom-donate {
+            background: var(--lighter-purple);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .custom-donate-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .custom-donate-input {
+            display: flex;
+            align-items: center;
+            max-width: 400px;
+            margin: 2rem auto;
+            background: #f5f5f5;
+            border-radius: 50px;
+            padding: 0.5rem;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .currency-symbol {
+            padding: 0 1rem;
+            font-weight: 600;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        
+        .custom-amount {
+            flex-grow: 1;
+            border: none;
+            background: none;
+            padding: 0.8rem 0;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            outline: none;
+        }
+        
+        .frequency-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .frequency-option {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            background: #f5f5f5;
+            color: #666;
+        }
+        
+        .frequency-option.active {
+            background: var(--primary-purple);
+            color: white;
+        }
+        
+        .impact-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+        
+        .impact-card {
+            background: var(--lighter-purple);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 4rem;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .impact-stat {
+            text-align: center;
+        }
+        
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+        }
+        
+        .impact-label {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .testimonial-section {
+            padding: 6rem 0;
+            background-color: var(--lighter-purple);
+        }
+        
+        @media (max-width: 991px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/ciple-logo.svg" alt="Ciple Logo">
+                <span>Ciple</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#transform">Features</a>
+                <a href="index.html#studies">Bible Studies</a>
+                <a href="index.html#prayer">Prayer Wall</a>
+                <a href="index.html#encouragement">Daily Encouragement</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="https://ciple.glide.page" class="nav-cta">Get Started for Free</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html#transform">Features</a>
+            <a href="index.html#studies">Bible Studies</a>
+            <a href="index.html#prayer">Prayer Wall</a>
+            <a href="index.html#encouragement">Daily Encouragement</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://ciple.glide.page" class="mobile-cta">Get Started for Free</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="donate-hero">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h1 style="font-size: 3rem; margin-bottom: 1.5rem; color: var(--primary-dark);">Support Our Mission</h1>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Your donation helps us keep Ciple free and accessible to believers worldwide. Together, we can transform lives through discipleship.</p>
+                <div class="hero-badge always-free" data-aos="fade-up" data-aos-delay="200" style="margin-top: 2rem;">
+                    Ciple is Always Free & 100% Supported by Donors Like You
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Options -->
+    <section class="donation-options">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Choose Your Impact Level</h2>
+                <p>Select a monthly donation that fits your budget</p>
+            </div>
+            
+            <div class="options-grid">
+                <div class="donate-option" data-aos="fade-up" data-aos-delay="100">
+                    <div class="donate-amount">$10</div>
+                    <div class="donate-frequency">per month</div>
+                    <div class="donate-feature">Supports server costs for 10 users</div>
+                    <div class="donate-feature">Recognition in our monthly newsletter</div>
+                    <div class="donate-feature">Access to supporter community</div>
+                    <a href="#custom-donate" class="donate-cta">Donate $10 Monthly</a>
+                </div>
+                
+                <div class="donate-option" data-aos="fade-up" data-aos-delay="200">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="donate-amount">$25</div>
+                    <div class="donate-frequency">per month</div>
+                    <div class="donate-feature">Supports server costs for 25 users</div>
+                    <div class="donate-feature">Recognition in our monthly newsletter</div>
+                    <div class="donate-feature">Access to supporter community</div>
+                    <div class="donate-feature">Quarterly impact report</div>
+                    <a href="#custom-donate" class="donate-cta">Donate $25 Monthly</a>
+                </div>
+                
+                <div class="donate-option" data-aos="fade-up" data-aos-delay="300">
+                    <div class="donate-amount">$50</div>
+                    <div class="donate-frequency">per month</div>
+                    <div class="donate-feature">Supports server costs for 50 users</div>
+                    <div class="donate-feature">Recognition in our monthly newsletter</div>
+                    <div class="donate-feature">Access to supporter community</div>
+                    <div class="donate-feature">Quarterly impact report</div>
+                    <div class="donate-feature">Early access to new features</div>
+                    <a href="#custom-donate" class="donate-cta">Donate $50 Monthly</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Donation -->
+    <section class="custom-donate" id="custom-donate">
+        <div class="section-container">
+            <div class="custom-donate-content" data-aos="fade-up">
+                <h2>Custom Donation</h2>
+                <p>Choose your own donation amount and frequency</p>
+                
+                <div class="custom-donate-input">
+                    <span class="currency-symbol">$</span>
+                    <input type="number" class="custom-amount" placeholder="Enter amount" min="1" value="25">
+                </div>
+                
+                <div class="frequency-selector">
+                    <div class="frequency-option active" data-frequency="monthly">Monthly</div>
+                    <div class="frequency-option" data-frequency="yearly">Yearly</div>
+                    <div class="frequency-option" data-frequency="one-time">One Time</div>
+                </div>
+                
+                <a href="#" class="donate-cta" id="custom-donate-btn">Donate Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Your Impact</h2>
+                <p>See how donations are helping believers worldwide</p>
+            </div>
+            
+            <div class="impact-card" data-aos="fade-up">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Your Support Makes a Difference</h3>
+                
+                <div class="impact-stats">
+                    <div class="impact-stat">
+                        <div class="impact-number">10,000+</div>
+                        <div class="impact-label">Active Users</div>
+                    </div>
+                    
+                    <div class="impact-stat">
+                        <div class="impact-number">50+</div>
+                        <div class="impact-label">Countries Reached</div>
+                    </div>
+                    
+                    <div class="impact-stat">
+                        <div class="impact-number">100%</div>
+                        <div class="impact-label">Donor Supported</div>
+                    </div>
+                </div>
+                
+                <p style="text-align: center; margin-top: 3rem;">
+                    Your donations directly fund our infrastructure, development, and outreach efforts. We're committed to keeping Ciple free for everyone, ensuring that financial constraints never prevent anyone from accessing quality discipleship tools.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonial-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>From Our Supporters</h2>
+                <p>Hear why others have chosen to support Ciple</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-quote">
+                        "I donate monthly because I believe everyone should have access to quality discipleship tools regardless of financial situation. Seeing the impact reports each quarter shows me how my contribution is helping believers around the world."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Robert Chen</h4>
+                            <p>Monthly Supporter since 2022</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-quote">
+                        "As a small church pastor with limited resources, I'm grateful that Ciple remains free for our congregation. That's why I personally support their mission - so others can benefit just as we have."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Pastor Marcus Williams</h4>
+                            <p>Quarterly Supporter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="download" style="padding: 6rem 0;">
+        <div class="download-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="section-container">
+            <div class="download-content" data-aos="fade-up">
+                <h2>Join Our Mission Today</h2>
+                <p>Your support helps believers around the world grow in their faith journey.</p>
+                <div class="hero-buttons" style="margin-top: 2rem;">
+                    <a href="#custom-donate" class="cta-button">Make a Donation</a>
+                    <a href="partner.html" class="secondary-cta">Explore Partnership Options</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/ciple-logo.svg" alt="Ciple Logo">
+                        <span>Ciple</span>
+                    </a>
+                    <p>AI-powered discipleship tools for your faith journey.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>Features</h4>
+                        <a href="index.html#studies">Bible Studies</a>
+                        <a href="index.html#prayer">Prayer Wall</a>
+                        <a href="index.html#encouragement">Daily Encouragement</a>
+                        <a href="features.html">All Features</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="mission.html">Our Mission</a>
+                        <a href="team.html">Team</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Resources</h4>
+                        <a href="blog.html">Blog</a>
+                        <a href="faq.html">FAQ</a>
+                        <a href="privacy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of Service</a>
+                    </div>
+                </div>
+                <div class="subscribe-form">
+                    <h4>Subscribe to Updates</h4>
+                    <p>Stay updated with the latest features and news.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Ciple. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Frequency selector functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const frequencyOptions = document.querySelectorAll('.frequency-option');
+            const customDonateBtn = document.getElementById('custom-donate-btn');
+            const customAmountInput = document.querySelector('.custom-amount');
+            
+            let selectedFrequency = 'monthly';
+            
+            // Update donate button text based on amount and frequency
+            function updateDonateButtonText() {
+                const amount = customAmountInput.value || '25';
+                let frequencyText = '';
+                
+                switch(selectedFrequency) {
+                    case 'monthly':
+                        frequencyText = ' Monthly';
+                        break;
+                    case 'yearly':
+                        frequencyText = ' Yearly';
+                        break;
+                    case 'one-time':
+                        frequencyText = '';
+                        break;
+                }
+                
+                customDonateBtn.textContent = `Donate $${amount}${frequencyText}`;
+            }
+            
+            // Set active frequency option
+            frequencyOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove active class from all options
+                    frequencyOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    option.classList.add('active');
+                    
+                    // Update selected frequency
+                    selectedFrequency = option.getAttribute('data-frequency');
+                    
+                    // Update button text
+                    updateDonateButtonText();
+                });
+            });
+            
+            // Update button text when amount changes
+            customAmountInput.addEventListener('input', updateDonateButtonText);
+            
+            // Initialize button text
+            updateDonateButtonText();
+        });
+    </script>
+</body>
+</html> 

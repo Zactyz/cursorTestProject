@@ -1,0 +1,65 @@
+<svg width="400" height="800" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- iPhone Frame -->
+    <rect x="50" y="20" width="300" height="600" rx="40" ry="40" fill="#1A1A1A" />
+    <rect x="60" y="30" width="280" height="580" rx="32" ry="32" fill="#0F0F0F" />
+    <rect x="65" y="35" width="270" height="570" rx="28" ry="28" fill="#FFFFFF" />
+    
+    <!-- Dynamic Island -->
+    <rect x="150" y="45" width="100" height="25" rx="12.5" ry="12.5" fill="#000000" />
+    
+    <!-- Status Bar -->
+    <text x="85" y="60" font-family="Arial" font-size="10" fill="#333">9:41</text>
+    <text x="315" y="60" font-family="Arial" font-size="10" fill="#333" text-anchor="end">100%</text>
+    
+    <!-- App Header -->
+    <rect x="65" y="80" width="270" height="60" rx="0" ry="0" fill="#672d90" />
+    <text x="200" y="120" font-family="Arial" font-weight="bold" font-size="20" fill="#FFFFFF" text-anchor="middle">Daily Encouragement</text>
+    
+    <!-- Greeting Section -->
+    <rect x="80" y="160" width="240" height="80" rx="15" ry="15" fill="#f7f3fc" />
+    <text x="200" y="190" font-family="Arial" font-weight="bold" font-size="18" fill="#19143c" text-anchor="middle">Good morning, David!</text>
+    <text x="200" y="220" font-family="Arial" font-size="14" fill="#672d90" text-anchor="middle">Let's grow in faith today</text>
+    
+    <!-- Verse of the Day -->
+    <rect x="80" y="260" width="240" height="160" rx="15" ry="15" fill="#f0ebf7" />
+    <text x="95" y="285" font-family="Arial" font-weight="bold" font-size="14" fill="#19143c">Verse of the Day</text>
+    <foreignObject x="95" y="295" width="210" height="100">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial; font-size: 12px; color: #333; line-height: 1.5;">
+            "And we know that in all things God works for the good of those who love him, who have been called according to his purpose."
+            <br/><br/>
+            <span style="font-style: italic; color: #672d90;">Romans 8:28</span>
+        </div>
+    </foreignObject>
+    <rect x="95" y="390" width="100" height="30" rx="15" ry="15" fill="#672d90" />
+    <text x="145" y="410" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle">Read More</text>
+    
+    <!-- Today's Challenge -->
+    <rect x="80" y="440" width="240" height="120" rx="15" ry="15" fill="#f7f3fc" />
+    <text x="95" y="465" font-family="Arial" font-weight="bold" font-size="14" fill="#19143c">Today's Challenge</text>
+    <foreignObject x="95" y="475" width="210" height="50">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Arial; font-size: 12px; color: #333; line-height: 1.5;">
+            Reach out to someone you haven't spoken to in a while and share an encouraging word.
+        </div>
+    </foreignObject>
+    <rect x="95" y="520" width="80" height="30" rx="15" ry="15" fill="#fcb328" />
+    <text x="135" y="540" font-family="Arial" font-size="12" fill="#19143c" text-anchor="middle">Start Now</text>
+    
+    <!-- Navigation Bar -->
+    <rect x="65" y="575" width="270" height="30" rx="0" ry="0" fill="#f7f3fc" />
+    
+    <!-- Navigation Icons -->
+    <circle cx="95" cy="590" r="10" fill="#672d90" />
+    <text x="95" y="610" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">Home</text>
+    
+    <circle cx="155" cy="590" r="10" fill="#ffffff" stroke="#672d90" stroke-width="1" />
+    <text x="155" y="610" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">Prayer</text>
+    
+    <circle cx="215" cy="590" r="10" fill="#ffffff" stroke="#672d90" stroke-width="1" />
+    <text x="215" y="610" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">Bible</text>
+    
+    <circle cx="275" cy="590" r="10" fill="#ffffff" stroke="#672d90" stroke-width="1" />
+    <text x="275" y="610" font-family="Arial" font-size="10" fill="#333" text-anchor="middle">Growth</text>
+    
+    <!-- Home Button -->
+    <circle cx="200" cy="650" r="20" fill="#f0f0f0" stroke="#ddd" stroke-width="1" />
+</svg> 

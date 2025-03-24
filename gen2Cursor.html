@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciple - AI-Powered Bible Discipleship</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #19143c;
+            --primary-purple: #672d90;
+            --primary-yellow: #fcb328;
+            --secondary-yellow: #fcba23;
+            --accent-orange: #f79d2c;
+            --deep-purple: #19133e;
+            --medium-purple: #2a174a;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --light-purple: #f0ebf7;
+            --gradient-purple: linear-gradient(135deg, #672d90 0%, #8a3cb8 100%);
+            --box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            color: #333;
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .nav.scrolled {
+            padding: 0.8rem 2rem;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-purple);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(103,45,144,0.2);
+        }
+
+        .logo:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo:hover .logo-icon {
+            transform: rotate(-5deg);
+            box-shadow: 0 6px 16px rgba(103,45,144,0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.8rem 1.8rem;
+            background: var(--gradient-purple);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(103,45,144,0.2);
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(103,45,144,0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10rem 1.5rem 5rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgba(240,235,247,0.4) 0%, rgba(255,255,255,1) 100%);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 1.8rem;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #555;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 1s ease 0.2s;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        /* Transform Section */
+        .transform {
+            padding: 8rem 1.5rem;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .transform-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .transform-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .transform-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+        }
+
+        .transform-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            transition: var(--transition);
+        }
+
+        .transform-card:hover .transform-icon {
+            background: var(--primary-purple);
+        }
+
+        .transform-icon i {
+            font-size: 2rem;
+            color: var(--primary-purple);
+            transition: var(--transition);
+        }
+
+        .transform-card:hover .transform-icon i {
+            color: white;
+        }
+
+        .transform-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+
+        .transform-card p {
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* Nonprofit Section */
+        .nonprofit {
+            padding: 7rem 1.5rem;
+            background: linear-gradient(180deg, var(--white) 0%, var(--light-purple) 100%);
+        }
+
+        .nonprofit-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .nonprofit-text {
+            flex: 1;
+        }
+
+        .nonprofit-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+        }
+
+        .nonprofit-text p {
+            color: #555;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .nonprofit-image {
+            flex: 1;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .nonprofit-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .nonprofit-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 1.5rem;
+            background: var(--white);
+        }
+
+        .features-header {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 5rem;
+        }
+
+        .features-header h2 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .features-header p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+        }
+
+        .feature-card img {
+            width: 90px;
+            height: 90px;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #666;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        /* Bible Studies Section */
+        .bible-studies {
+            padding: 8rem 1.5rem;
+            background: linear-gradient(180deg, var(--white) 0%, var(--light-purple) 100%);
+        }
+
+        .bible-studies-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .bible-studies-text {
+            flex: 1;
+        }
+
+        .bible-studies-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+        }
+
+        .bible-studies-text p {
+            color: #555;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .bible-studies-image {
+            flex: 1;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .bible-studies-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .bible-studies-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Prayer Wall Section */
+        .prayer-wall {
+            padding: 8rem 1.5rem;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .prayer-wall-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .prayer-wall-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+        }
+
+        .prayer-wall-content p {
+            color: #555;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .prayer-wall-content img {
+            max-width: 100%;
+            border-radius: 24px;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.5s ease;
+        }
+
+        .prayer-wall-content img:hover {
+            transform: scale(1.02);
+        }
+
+        /* Daily Section */
+        .daily {
+            padding: 8rem 1.5rem;
+            background: linear-gradient(180deg, var(--white) 0%, var(--light-purple) 100%);
+        }
+
+        .daily-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .daily-text {
+            flex: 1;
+        }
+
+        .daily-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+        }
+
+        .daily-text p {
+            color: #555;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .daily-image {
+            flex: 1;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            position: relative;
+        }
+
+        .daily-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .daily-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Community Section */
+        .community {
+            padding: 7rem 1.5rem;
+            background: var(--white);
+        }
+
+        .community-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .community-text {
+            max-width: 550px;
+        }
+
+        .community-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+        }
+
+        .community-text p {
+            color: #555;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .community-buttons {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .community-button {
+            padding: 1rem 2.2rem;
+            background: var(--gradient-purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(103,45,144,0.2);
+        }
+
+        .community-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(103,45,144,0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--deep-purple);
+            color: white;
+            padding: 6rem 1.5rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3.5rem;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .footer-logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--gradient-purple);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-about {
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 320px;
+            line-height: 1.8;
+        }
+
+        .footer-subscribe h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-subscribe-form {
+            display: flex;
+            margin-bottom: 1.2rem;
+        }
+
+        .footer-subscribe-input {
+            flex-grow: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .footer-subscribe-button {
+            padding: 1rem 1.5rem;
+            background: var(--primary-yellow);
+            color: var(--primary-dark);
+            border: none;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .footer-subscribe-button:hover {
+            background: var(--accent-orange);
+        }
+
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-social a {
+            width: 42px;
+            height: 42px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--primary-purple);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 5rem auto 0;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom-links a:hover {
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .transform-grid, .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nonprofit-content, .bible-studies-content, .daily-content {
+                flex-direction: column;
+                gap: 3.5rem;
+            }
+            
+            .daily-content {
+                flex-direction: column-reverse;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .transform-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .community-content {
+                flex-direction: column;
+                gap: 2.5rem;
+                text-align: center;
+            }
+            
+            .community-text {
+                max-width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            
+            .footer-bottom-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i class="fas fa-cross"></i></div>
+                Ciple
+            </a>
+            <div class="nav-links">
+                <a href="#transform">Features</a>
+                <a href="#nonprofit">About</a>
+                <a href="#bible-studies">Bible Studies</a>
+                <a href="#prayer-wall">Prayer</a>
+                <a href="#daily">Daily</a>
+                <a href="#community">Community</a>
+            </div>
+            <a href="#" class="nav-cta">Get Started</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Faith Journey with AI-Powered Discipleship</h1>
+            <p>Experience personalized Bible studies, prayer support, and daily encouragement designed to deepen your relationship with God and connect you with a community of believers.</p>
+            <div class="hero-buttons">
+                <a href="#" class="cta-button">Get Started Free</a>
+                <a href="#" class="secondary-cta">Learn More</a>
+            </div>
+            <div class="hero-badges">
+                <div class="hero-badge">
+                    <i class="fas fa-bible"></i>
+                    <span>Scripture-Based</span>
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-brain"></i>
+                    <span>AI-Powered</span>
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-users"></i>
+                    <span>Community-Focused</span>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ciple App Interface">
+            </div>
+        </div>
+    </section>
+
+    <section class="transform" id="transform">
+        <div class="section-header">
+            <h2>Transform Your Spiritual Growth</h2>
+            <p>Discover how Ciple can help you deepen your faith and live out God's purpose for your life</p>
+        </div>
+        <div class="transform-grid">
+            <div class="transform-card">
+                <div class="transform-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Personalized Bible Study</h3>
+                <p>Receive tailored scripture insights and theological answers that adapt to your spiritual journey and learning style.</p>
+            </div>
+            <div class="transform-card">
+                <div class="transform-icon">
+                    <i class="fas fa-praying-hands"></i>
+                </div>
+                <h3>Focused Prayer Life</h3>
+                <p>Strengthen your prayer habits with guided journaling, prayer requests, and a supportive community.</p>
+            </div>
+            <div class="transform-card">
+                <div class="transform-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Track Spiritual Growth</h3>
+                <p>Visualize your progress with our Discipleship Growth Tool that provides personalized next steps for your faith journey.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="nonprofit" id="nonprofit">
+        <div class="nonprofit-content">
+            <div class="nonprofit-text">
+                <h2>Experience a transformative faith journey without financial barriers</h2>
+                <p>At Ciple, we believe that spiritual growth should be accessible to everyone. Matthew 10:8 reminds us, "You received without paying; give without pay," reflecting our commitment to a nonprofit model that empowers users to pay it forward.</p>
+            </div>
+            <div class="nonprofit-image">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Happy people">
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="features-header">
+            <h2>Empower Your Spiritual Journey</h2>
+            <p>Discover the tools that will transform your relationship with God</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="https://img.icons8.com/fluent/96/000000/book.png" alt="Bible study">
+                <h3>Tailored Bible Studies</h3>
+                <p>Enhance your understanding with personalized studies and reflections that adapt to your learning style and spiritual needs</p>
+                <a href="#" class="cta-button">Learn More</a>
+            </div>
+            <div class="feature-card">
+                <img src="https://img.icons8.com/fluent/96/000000/pray.png" alt="Prayer">
+                <h3>Prayer Wall</h3>
+                <p>Connect with others through our dedicated prayer community where you can share requests and support fellow believers</p>
+                <a href="#" class="cta-button">Join Now</a>
+            </div>
+            <div class="feature-card">
+                <img src="https://img.icons8.com/fluent/96/000000/sun.png" alt="Daily encouragement">
+                <h3>Daily Encouragement</h3>
+                <p>Receive uplifting messages to strengthen your faith daily, carefully selected to address your current spiritual season</p>
+                <a href="#" class="cta-button">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bible-studies" id="bible-studies">
+        <div class="bible-studies-content">
+            <div class="bible-studies-text">
+                <h2>Tailored Bible Studies for Deepening Your Understanding</h2>
+                <p>Track your progress and grow in your faith with personalized study plans and insights that adapt to your learning style and spiritual needs</p>
+            </div>
+            <div class="bible-studies-image">
+                <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Bible study">
+            </div>
+        </div>
+    </section>
+
+    <section class="prayer-wall" id="prayer-wall">
+        <div class="prayer-wall-content">
+            <h2>Connect and uplift others through our dedicated prayer wall</h2>
+            <p>Share your prayer requests and support others in their spiritual journey</p>
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Prayer community">
+        </div>
+    </section>
+
+    <section class="daily" id="daily">
+        <div class="daily-content">
+            <div class="daily-image">
+

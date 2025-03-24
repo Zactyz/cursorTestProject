@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciple - AI-Powered Discipleship</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #19143c;
+            --primary-purple: #672d90;
+            --primary-yellow: #fcb328;
+            --secondary-yellow: #fcba23;
+            --accent-orange: #f79d2c;
+            --deep-purple: #19133e;
+            --medium-purple: #2a174a;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --light-purple: #f0ebf7;
+            --gradient-purple: linear-gradient(135deg, #672d90 0%, #8a3cb8 100%);
+            --box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            color: #333;
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1.2rem 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-purple);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: linear-gradient(135deg, rgba(25,20,60,0.02) 0%, rgba(103,45,144,0.05) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(103,45,144,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(-45deg);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            line-height: 1.2;
+            background: var(--gradient-purple);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            color: var(--medium-purple);
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: var(--gradient-purple);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-right: 1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(103,45,144,0.3);
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(103,45,144,0.4);
+        }
+
+        .secondary-cta {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            border: 2px solid var(--primary-purple);
+            color: var(--primary-purple);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .secondary-cta:hover {
+            background: var(--light-purple);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(103,45,144,0.1);
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 4rem 0;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--white);
+            border-radius: 50px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .hero-badge:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .hero-badge i {
+            color: var(--primary-purple);
+            font-size: 1.2rem;
+        }
+
+        .hero-badge span {
+            font-weight: 500;
+        }
+
+        /* App Preview Section */
+        .app-preview {
+            padding: 8rem 2rem;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-preview-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .app-preview-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .app-preview-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .app-preview-image {
+            position: relative;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .app-preview-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 2rem;
+            background: var(--light-gray);
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(to bottom, var(--white), var(--light-gray));
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-purple);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-out;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        /* Transform Section */
+        .transform {
+            padding: 8rem 2rem;
+            background: var(--white);
+            position: relative;
+        }
+
+        .transform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .transform-card {
+            padding: 2.5rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .transform-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(103,45,144,0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .transform-card:hover::after {
+            opacity: 1;
+        }
+
+        .transform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .transform-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light-purple);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .transform-card:hover .transform-icon {
+            background: var(--primary-purple);
+            transform: rotate(5deg) scale(1.1);
+        }
+
+        .transform-icon i {
+            font-size: 2rem;
+            color: var(--primary-purple);
+            transition: var(--transition);
+        }
+
+        .transform-card:hover .transform-icon i {
+            color: var(--white);
+        }
+
+        /* Community Section */
+        .community {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--light-purple) 0%, var(--white) 100%);
+        }
+
+        .community-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .community-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .community-text h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            line-height: 1.2;
+        }
+
+        .community-text p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .community-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .community-image img {
+            width: 100%;
+            height: auto;
+            transition: var(--transition);
+        }
+
+        .community-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Download Section */
+        .download {
+            padding: 8rem 2rem;
+            background: var(--gradient-purple);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .download-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .app-button {
+            padding: 1.2rem 2.5rem;
+            background: var(--white);
+            color: var(--primary-purple);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .app-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .app-button i {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 6rem 2rem 4rem;
+            background: var(--deep-purple);
+            color: var(--white);
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--primary-yellow);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-yellow);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-yellow);
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .community-content,
+            .app-preview-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .app-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .transform-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <img src="https://via.placeholder.com/40x40" alt="Ciple Logo">
+                Ciple
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#transform">Transform</a>
+                <a href="#community">Community</a>
+                <a href="#download">Download</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Personal AI-Powered Discipleship Journey</h1>
+            <p>Experience a revolutionary approach to spiritual growth with personalized Bible study, intelligent mentoring, and meaningful community connection - all powered by advanced AI technology</p>
+            <a href="#download" class="cta-button">Start Free Today</a>
+            <a href="#features" class="secondary-cta">See How It Works</a>
+            <div class="hero-badges">
+                <div class="hero-badge">
+                    <i class="fas fa-robot"></i>
+                    <span>AI-Powered Mentor</span>
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-brain"></i>
+                    <span>Smart Growth Tracking</span>
+                </div>
+                <div class="hero-badge">
+                    <i class="fas fa-users"></i>
+                    <span>Vibrant Community</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-preview">
+        <div class="app-preview-content">
+            <div class="app-preview-text">
+                <h2>Designed for Your Spiritual Journey</h2>
+                <p>Experience seamless navigation and intuitive features that make your daily spiritual practice effortless and meaningful.</p>
+            </div>
+            <div class="app-preview-image">
+                <img src="https://via.placeholder.com/600x400" alt="Ciple App Preview">
+            </div>
+        </div>
+    </section>
+
+    <section class="transform" id="transform">
+        <div class="section-header">
+            <h2>Transform Your Faith Journey</h2>
+            <p>Discover how Ciple's AI-powered features create a personalized path for spiritual growth</p>
+        </div>
+        <div class="transform-grid">
+            <div class="transform-card">
+                <div class="transform-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3>Daily Faith Engagement</h3>
+                <p>Start each day with personalized scripture, challenges, and inspiring testimonies tailored to your journey.</p>
+            </div>
+            <div class="transform-card">
+                <div class="transform-icon">
+                    <i class="fas fa-book-reader"></i>
+                </div>
+                <h3>Deep Bible Study</h3>
+                <p>Access AI-powered theological Q&A, scripture breakdowns, and contextual insights for meaningful study.</p>
+            </div>
+            <div class="transform-card">
+                <div class="transform-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Growth Tracking</h3>
+                <p>Monitor your spiritual progress with our AI-driven Discipleship Growth Tool and personalized next steps.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Powerful Features for Your Journey</h2>
+            <p>Everything you need to grow in your faith, intelligently designed around you</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-pray"></i>
+                <h3>Prayer Life</h3>
+                <p>Strengthen your prayer journey with guided journaling, community prayer wall, and voice-to-text capabilities.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-book"></i>
+                <h3>Sermon Notes</h3>
+                <p>Capture and organize insights with AI-refined structure and biblical alignment checking.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Community Connection</h3>
+                <p>Share testimonies, join discussion groups, and connect with believers worldwide.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="community" id="community">
+        <div class="community-content">
+            <div class="community-text">
+                <h2>Experience Growth Without Barriers</h2>
+                <p>"You received without paying; give without pay" - Matthew 10:8</p>
+                <p>At Ciple, we believe spiritual growth should be accessible to everyone. Our nonprofit model empowers users to pay it forward and support others' journeys.</p>
+                <a href="#download" class="cta-button">Join Our Mission</a>
+            </div>
+            <div class="community-image">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Ciple Community">
+            </div>
+        </div>
+    </section>
+
+    <section class="download" id="download">
+        <div class="download-content">
+            <h2>Begin Your Transformed Journey Today</h2>
+            <p>Download Ciple now and experience the future of faith-based discipleship</p>
+            <div class="app-buttons">
+                <a href="#" class="app-button">
+                    <i class="fab fa-apple"></i> App Store
+                </a>
+                <a href="#" class="app-button">
+                    <i class="fab fa-google-play"></i> Google Play
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Ciple</h3>
+                <p>AI-Powered Discipleship</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Features</h3>
+                <ul class="footer-links">
+                    <li><a href="#features">Daily Engagement</a></li>
+                    <li><a href="#transform">Bible Study</a></li>
+                    <li><a href="#community">Prayer Life</a></li>
+                    <li><a href="#download">Growth Tracking</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:hello@ciple.app">hello@ciple.app</a></li>
+                    <li><a href="#">Partner With Us</a></li>
+                    <li><a href="#">Donate</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

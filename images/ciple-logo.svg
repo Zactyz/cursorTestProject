@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Cross base -->
+  <path d="M85,95 L85,170 C85,177.5 90.5,185 100,185 C109.5,185 115,177.5 115,170 L115,95 L170,95 C177.5,95 185,89.5 185,80 C185,70.5 177.5,65 170,65 L115,65 L115,30 C115,22.5 109.5,15 100,15 C90.5,15 85,22.5 85,30 L85,65 L30,65 C22.5,65 15,70.5 15,80 C15,89.5 22.5,95 30,95 L85,95 Z" fill="url(#crossGradient)" />
+  
+  <!-- Flame -->
+  <path d="M100,15 C95,35 85,45 82.5,65 C80,85 90,95 100,95 C110,95 120,85 117.5,65 C115,45 105,35 100,15 Z" fill="url(#flameGradient)" />
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="crossGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#672d90" />
+      <stop offset="50%" stop-color="#f79d2c" />
+      <stop offset="100%" stop-color="#672d90" />
+    </linearGradient>
+    
+    <linearGradient id="flameGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fcb328" />
+      <stop offset="50%" stop-color="#f79d2c" />
+      <stop offset="100%" stop-color="#fcba23" />
+    </linearGradient>
+  </defs>
+</svg> 
