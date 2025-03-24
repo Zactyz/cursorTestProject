@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Churches - Ciple - AI-Powered Bible Discipleship</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/logoNoBackground.png" type="image/png">
+    <style>
+        .church-hero {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            background-color: var(--lighter-purple);
+            color: var(--primary-dark);
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .church-hero .hero-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            gap: 1.5rem;
+        }
+        
+        .church-hero .hero-badge {
+            display: flex;
+            align-items: center;
+            background: rgba(103, 58, 183, 0.1);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            gap: 0.5rem;
+        }
+        
+        .church-hero .hero-badge i {
+            font-size: 1.2rem;
+            color: var(--primary-purple);
+        }
+        
+        .church-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .church-hero p {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+        
+        .dashboard-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .dashboard-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        
+        .dashboard-image {
+            height: 220px;
+            overflow: hidden;
+        }
+        
+        .dashboard-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .dashboard-card:hover .dashboard-image img {
+            transform: scale(1.05);
+        }
+        
+        .dashboard-content {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .dashboard-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .dashboard-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .dashboard-tag {
+            display: inline-block;
+            background: var(--light-purple);
+            color: var(--primary-purple);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .discovery-section {
+            padding: 6rem 0;
+            background-color: var(--light-purple);
+        }
+        
+        .discovery-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 992px) {
+            .discovery-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .discovery-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            height: 100%;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-purple);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(103,58,183,0.3);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: var(--light-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-purple);
+            transition: var(--transition);
+        }
+        
+        .church-cta {
+            background: var(--light-purple);
+            padding: 6rem 0;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+        
+        .church-cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .church-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .church-testimonials {
+            padding: 6rem 0;
+            background-color: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        @media (max-width: 992px) {
+            .testimonial-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-top: 1.5rem;
+        }
+        
+        .testimonial-content:before {
+            content: '\201C';
+            font-size: 4rem;
+            position: absolute;
+            top: -1rem;
+            left: -0.5rem;
+            color: var(--light-purple);
+            opacity: 0.6;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+            color: var(--primary-dark);
+        }
+        
+        .testimonial-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Mobile app preview section */
+        .app-showcase {
+            padding: 6rem 0;
+            background-color: var(--light-purple);
+        }
+        
+        .app-showcase-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        @media (max-width: 992px) {
+            .app-showcase-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .app-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .app-text p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+        
+        .app-features {
+            margin-bottom: 2rem;
+        }
+        
+        .app-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .app-feature i {
+            color: var(--primary-purple);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .app-feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .app-feature-text p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+        
+        .phone-mockup {
+            position: relative;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+        
+        .phone-frame {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+        }
+        
+        .phone-screen {
+            position: absolute;
+            top: 6%;
+            left: 6%;
+            width: 88%;
+            height: 89%;
+            border-radius: 30px;
+            overflow: hidden;
+            background: #f6f9fc;
+        }
+        
+        .phone-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .app-header {
+            background: var(--gradient-purple);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .app-header h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+        
+        .app-body {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        
+        .app-dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .app-stat {
+            background: white;
+            border-radius: 10px;
+            padding: 0.8rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .app-stat h5 {
+            margin: 0 0 0.5rem;
+            font-size: 0.7rem;
+            color: #666;
+        }
+        
+        .app-stat p {
+            margin: 0;
+            font-size: 1.2rem;
+            color: var(--primary-purple);
+            font-weight: 700;
+        }
+        
+        .app-list {
+            background: white;
+            border-radius: 10px;
+            padding: 0.8rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 1rem;
+        }
+        
+        .app-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .app-list-header h5 {
+            margin: 0;
+            font-size: 0.8rem;
+            color: var(--primary-dark);
+        }
+        
+        .app-list-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.7rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .app-list-item:last-child {
+            border-bottom: none;
+        }
+        
+        .app-list-item i {
+            color: var(--primary-purple);
+            margin-right: 0.5rem;
+            font-size: 0.6rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/logoNoBackground.png" alt="Ciple Logo">
+                <span>Ciple</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                    <a href="index.html#transform" class="dropdown-toggle">Features <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="index.html#studies">Bible Studies</a>
+                        <a href="index.html#prayer">Prayer Wall</a>
+                        <a href="index.html#encouragement">Daily Encouragement</a>
+                    </div>
+                </div>
+                <a href="index.html#nonprofit">Always Free</a>
+                <a href="support.html">Support</a>
+                <a href="about.html">About</a>
+                <a href="church.html" class="active">For Churches</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="https://ciple.glide.page" class="nav-cta">Get Started for Free</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="index.html#transform">Features</a>
+            <a href="index.html#studies">Bible Studies</a>
+            <a href="index.html#prayer">Prayer Wall</a>
+            <a href="index.html#encouragement">Daily Encouragement</a>
+            <a href="index.html#nonprofit">Always Free</a>
+            <a href="support.html">Support</a>
+            <a href="about.html">About</a>
+            <a href="church.html" class="active">For Churches</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://ciple.glide.page" class="mobile-cta">Get Started for Free</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="church-hero">
+        <div class="section-container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>Empower Your Church Community</h1>
+                <p>Integrate AI-powered discipleship tools that connect your congregation with Biblical wisdom and community support.</p>
+                <div class="hero-buttons" style="margin-top: 2rem;">
+                    <a href="#contact" class="cta-button">Schedule Demo</a>
+                    <a href="#features" class="secondary-cta">Explore Features</a>
+                </div>
+                <div class="hero-badges">
+                    <div class="hero-badge">
+                        <i class="fas fa-users"></i>
+                        <span>Community Building</span>
+                    </div>
+                    <div class="hero-badge">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Growth Analytics</span>
+                    </div>
+                    <div class="hero-badge">
+                        <i class="fas fa-cross"></i>
+                        <span>Scripture-Centered</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section" id="features">
+        <div class="section-container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>Transform Your Ministry with Ciple</h2>
+                <p>Powerful tools designed specifically for church communities</p>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="dashboard-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Church Analytics Dashboard">
+                    </div>
+                    <div class="dashboard-content">
+                        <span class="dashboard-tag">Analytics</span>
+                        <h3>Engagement Analytics</h3>
+                        <p>Track congregation engagement with Bible studies, prayer requests, and community discussions to better understand your church's spiritual growth.</p>
+                        <a href="#" class="btn-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="dashboard-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="dashboard-image">
+                        <img src="https://images.unsplash.com/photo-1588600878108-578307a3cc9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bible Study Content">
+                    </div>
+                    <div class="dashboard-content">
+                        <span class="dashboard-tag">Content</span>
+                        <h3>Custom Content Creation</h3>
+                        <p>Create sermon-aligned Bible studies, discussion guides, and devotionals that reinforce your teaching and theological perspective.</p>
+                        <a href="#" class="btn-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="dashboard-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="dashboard-image">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Small Group Management">
+                    </div>
+                    <div class="dashboard-content">
+                        <span class="dashboard-tag">Community</span>
+                        <h3>Small Group Management</h3>
+                        <p>Organize and manage small groups with automated reminders, discussion guides, and attendance tracking to foster community connection.</p>
+                        <a href="#" class="btn-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="dashboard-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="dashboard-image">
+                        <img src="https://images.unsplash.com/photo-1514939775307-d44e76771673?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prayer Requests" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="dashboard-content">
+                        <span class="dashboard-tag">Prayer</span>
+                        <h3>Prayer Request System</h3>
+                        <p>Create private or public prayer walls where members can share requests, record answered prayers, and support one another in their spiritual journey.</p>
+                        <a href="#" class="btn-link">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Showcase Section -->
+    <section class="app-showcase">
+        <div class="section-container">
+            <div class="app-showcase-content">
+                <div class="app-text" data-aos="fade-right">
+                    <h2>Church Dashboard at Your Fingertips</h2>
+                    <p>Manage your ministry from anywhere with our intuitive mobile application, designed specifically for church leaders.</p>
+                    
+                    <div class="app-features">
+                        <div class="app-feature">
+                            <i class="fas fa-chart-line"></i>
+                            <div class="app-feature-text">
+                                <h4>Real-Time Analytics</h4>
+                                <p>Monitor engagement and growth metrics with easy-to-understand visualizations and reports.</p>
+                            </div>
+                        </div>
+                        <div class="app-feature">
+                            <i class="fas fa-calendar-alt"></i>
+                            <div class="app-feature-text">
+                                <h4>Event Management</h4>
+                                <p>Schedule, promote, and track attendance for services, small groups, and special events.</p>
+                            </div>
+                        </div>
+                        <div class="app-feature">
+                            <i class="fas fa-comments"></i>
+                            <div class="app-feature-text">
+                                <h4>Communication Tools</h4>
+                                <p>Send targeted messages to specific groups or individuals within your congregation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="cta-button">Request Demo Access</a>
+                </div>
+                
+                <div class="phone-mockup" data-aos="fade-left">
+                    <svg class="phone-frame" viewBox="0 0 300 600" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="280" height="580" rx="40" ry="40" fill="#1a1a1a" />
+                        <rect x="24" y="30" width="252" height="540" rx="20" ry="20" fill="#f6f9fc" />
+                    </svg>
+                    <div class="phone-screen">
+                        <div class="phone-content">
+                            <div class="app-header">
+                                <h4>Ciple Church Dashboard</h4>
+                            </div>
+                            <div class="app-body">
+                                <div class="app-dashboard">
+                                    <div class="app-stat">
+                                        <h5>ACTIVE MEMBERS</h5>
+                                        <p>142</p>
+                                    </div>
+                                    <div class="app-stat">
+                                        <h5>PRAYER REQUESTS</h5>
+                                        <p>37</p>
+                                    </div>
+                                    <div class="app-stat">
+                                        <h5>SMALL GROUPS</h5>
+                                        <p>12</p>
+                                    </div>
+                                    <div class="app-stat">
+                                        <h5>ENGAGEMENT</h5>
+                                        <p>76%</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="app-list">
+                                    <div class="app-list-header">
+                                        <h5>UPCOMING EVENTS</h5>
+                                    </div>
+                                    <div class="app-list-item">
+                                        <i class="fas fa-circle"></i>
+                                        <span>Sunday Service - 9:00 AM</span>
+                                    </div>
+                                    <div class="app-list-item">
+                                        <i class="fas fa-circle"></i>
+                                        <span>Bible Study - Tuesday 7:00 PM</span>
+                                    </div>
+                                    <div class="app-list-item">
+                                        <i class="fas fa-circle"></i>
+                                        <span>Youth Group - Friday 6:30 PM</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="app-list">
+                                    <div class="app-list-header">
+                                        <h5>RECENT ACTIVITY</h5>
+                                    </div>
+                                    <div class="app-list-item">
+                                        <i class="fas fa-circle"></i>
+                                        <span>New prayer request from Sarah</span>
+                                    </div>
+                                    <div class="app-list-item">
+                                        <i class="fas fa-circle"></i>
+                                        <span>Small Group #3 reached 100% attendance</span>
+                                    </div>
+                                    <div class="app-list-item">
+                                        <i class="fas fa-circle"></i>
+                                        <span>5 new members joined this week</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discovery Section -->
+    <section class="discovery-section">
+        <div class="section-container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>How It Works</h2>
+                <p>Integrating Ciple into your church ministry is simple and effective</p>
+            </div>
+            <div class="discovery-steps">
+                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Partner with Ciple</h3>
+                    <p>Schedule a demonstration and consultation to discuss your church's unique needs and ministry goals.</p>
+                </div>
+                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Customize Your Platform</h3>
+                    <p>Work with our team to configure the platform with your church branding, content, and specific ministry requirements.</p>
+                </div>
+                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Invite Your Congregation</h3>
+                    <p>Introduce the platform to your congregation with our provided resources and onboarding materials.</p>
+                </div>
+                <div class="step-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Measure & Grow</h3>
+                    <p>Review engagement analytics and feedback to continually improve your digital discipleship strategy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="church-testimonials">
+        <div class="section-container">
+            <div class="section-header text-center" data-aos="fade-up">
+                <h2>What Church Leaders Say</h2>
+                <p>Hear from pastors who have integrated Ciple into their ministry</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-content">
+                        Ciple has revolutionized how we approach digital discipleship. Our small groups are more connected than ever, and members are engaging with scripture throughout the week.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Pastor Michael">
+                        <div class="testimonial-info">
+                            <h4>Pastor Michael Johnson</h4>
+                            <p>Grace Community Church</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-content">
+                        The analytics features have given us unprecedented insight into our congregation's spiritual journey. We can now better tailor our sermons and programs to meet actual needs.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Pastor Sarah">
+                        <div class="testimonial-info">
+                            <h4>Pastor Sarah Williams</h4>
+                            <p>New Life Fellowship</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-content">
+                        Our prayer ministry has grown tremendously since implementing Ciple. The prayer wall feature has created a beautiful space for our congregation to support one another.
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Pastor David">
+                        <div class="testimonial-info">
+                            <h4>Pastor David Chen</h4>
+                            <p>Cornerstone Bible Church</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="church-cta" id="contact">
+        <div class="section-container">
+            <div class="church-cta-content" data-aos="fade-up">
+                <h2>Transform Your Church's Discipleship</h2>
+                <p>Ready to take your ministry to the next level with AI-powered tools designed for spiritual growth and community connection?</p>
+                <div class="church-cta-buttons">
+                    <a href="contact.html" class="cta-button">Schedule a Demo</a>
+                    <a href="contact.html" class="secondary-cta">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/logoNoBackground.png" alt="Ciple Logo">
+                        <span>Ciple</span>
+                    </a>
+                    <p>AI-powered discipleship tools for your faith journey.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>Features</h4>
+                        <a href="index.html#studies">Bible Studies</a>
+                        <a href="index.html#prayer">Prayer Wall</a>
+                        <a href="index.html#encouragement">Daily Encouragement</a>
+                        <a href="church.html">For Churches</a>
+                        <a href="support.html">Community</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="support.html">Our Mission</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="support.html#donate">Donate</a>
+                        <a href="support.html#partner">Partner With Us</a>
+                    </div>
+                </div>
+                <div class="subscribe-form">
+                    <h4>Subscribe to Updates</h4>
+                    <p>Stay updated with the latest features and news.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ciple. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease',
+            once: true,
+            offset: 100
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+            this.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

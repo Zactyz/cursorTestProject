@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/logoNoBackground.png" type="image/png">
     <style>
         .team-grid {
             display: grid;
@@ -176,30 +177,42 @@
     <nav class="navbar" id="navbar">
         <div class="nav-content">
             <a href="index.html" class="logo">
-                <img src="images/ciple-logo.svg" alt="Ciple Logo">
+                <img src="images/logoNoBackground.png" alt="Ciple Logo">
                 <span>Ciple</span>
             </a>
             <div class="nav-links">
-                <a href="index.html#transform">Features</a>
-                <a href="index.html#studies">Bible Studies</a>
-                <a href="index.html#prayer">Prayer Wall</a>
-                <a href="index.html#encouragement">Daily Encouragement</a>
-                <a href="about.html">About</a>
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                    <a href="index.html#transform" class="dropdown-toggle">Features <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="index.html#studies">Bible Studies</a>
+                        <a href="index.html#prayer">Prayer Wall</a>
+                        <a href="index.html#encouragement">Daily Encouragement</a>
+                    </div>
+                </div>
+                <a href="index.html#nonprofit">Always Free</a>
+                <a href="support.html">Support</a>
+                <a href="about.html" class="active">About</a>
+                <a href="church.html">For Churches</a>
                 <a href="contact.html">Contact</a>
             </div>
-            <a href="index.html#download" class="nav-cta">Get Started Free</a>
+            <a href="https://ciple.glide.page" class="nav-cta">Get Started for Free</a>
             <button class="mobile-menu-btn" id="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
         <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Home</a>
             <a href="index.html#transform">Features</a>
             <a href="index.html#studies">Bible Studies</a>
             <a href="index.html#prayer">Prayer Wall</a>
             <a href="index.html#encouragement">Daily Encouragement</a>
-            <a href="about.html">About</a>
+            <a href="index.html#nonprofit">Always Free</a>
+            <a href="support.html">Support</a>
+            <a href="about.html" class="active">About</a>
+            <a href="church.html">For Churches</a>
             <a href="contact.html">Contact</a>
-            <a href="index.html#download" class="mobile-cta">Get Started Free</a>
+            <a href="https://ciple.glide.page" class="mobile-cta">Get Started for Free</a>
         </div>
     </nav>
 
@@ -207,25 +220,27 @@
     <section class="hero about-hero" style="min-height: 50vh; padding-top: 12rem; padding-bottom: 6rem;">
         <div class="hero-content">
             <h1 data-aos="fade-up">About Ciple</h1>
-            <p data-aos="fade-up" data-aos-delay="100">We're on a mission to transform discipleship through AI-powered personalization while maintaining biblical authenticity.</p>
+            <p data-aos="fade-up" data-aos-delay="100">Transforming discipleship through AI-powered personalization while maintaining biblical authenticity.</p>
         </div>
         <div class="hero-shape-1"></div>
         <div class="hero-shape-2"></div>
     </section>
 
     <!-- Mission Section -->
-    <section class="mission-section">
+    <section class="mission-section" style="padding: 6rem 0; background-color: var(--light-purple);">
         <div class="section-container">
-            <div class="two-column-section">
-                <div class="column-text" data-aos="fade-right">
-                    <h2>Our Mission</h2>
-                    <p>Ciple exists to make discipleship accessible, engaging, and personalized for everyone seeking to deepen their faith journey. We believe that by combining innovative technology with biblical truth, we can help people grow in their relationship with Christ in a way that meets them where they are.</p>
-                    <p>Our nonprofit model ensures that spiritual growth resources remain accessible to everyone regardless of financial means. We're guided by Matthew 10:8, "You received without paying; give without pay," as we seek to empower believers worldwide.</p>
-                    <a href="donate.html" class="cta-button" style="margin-top: 1.5rem;">Support Our Mission</a>
-                </div>
-                <div class="column-image" data-aos="fade-left">
-                    <img src="images/mission.jpg" alt="Our Mission - people gathered studying the Bible">
-                </div>
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Mission</h2>
+                <p>Making spiritual growth accessible to all</p>
+            </div>
+            <div class="mission-content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;" data-aos="fade-up">
+                    At Ciple, we believe that deep, transformational faith journeys should be accessible to everyone, regardless of financial resources or theological background. Our mission is to leverage AI technology to help people develop a mature, biblically-grounded faith through personalized discipleship resources.
+                </p>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;" data-aos="fade-up" data-aos-delay="100">
+                    We are committed to keeping Ciple free forever, guided by Jesus' words in Matthew 10:8: "You received without paying; give without pay." Our team of theologians, technologists, and ministry leaders works to ensure all content remains biblically sound while leveraging innovation to meet people wherever they are on their spiritual journey.
+                </p>
+                <a href="support.html" class="cta-button" style="margin-top: 4rem;">Support Our Mission</a>
             </div>
         </div>
     </section>
@@ -233,15 +248,14 @@
     <!-- Vision Section -->
     <section class="vision-section">
         <div class="section-container">
-            <div class="two-column-section reverse">
+            <div class="two-column-section">
                 <div class="column-image" data-aos="fade-right">
-                    <img src="images/vision.jpg" alt="Our Vision - digital discipleship">
+                    <img src="images/learning.jpg" alt="Our Vision - digital discipleship">
                 </div>
                 <div class="column-text" data-aos="fade-left">
                     <h2>Our Vision</h2>
-                    <p>We envision a world where technology serves as a bridge, not a barrier, to authentic spiritual growth. Ciple aims to be the leading AI-powered discipleship platform that complements—never replaces—personal relationships, church community, and direct engagement with Scripture.</p>
-                    <p>By 2025, we aim to serve over 1 million users worldwide, partner with 5,000+ churches, and continue developing adaptive technology that meets the unique needs of each believer while remaining firmly grounded in biblical truth.</p>
-                    <a href="team.html" class="text-button" style="margin-top: 1.5rem;">Meet the team behind the vision <i class="fas fa-arrow-right"></i></a>
+                    <p>We envision technology serving as a bridge, not a barrier, to authentic spiritual growth. Ciple aims to be the leading AI-powered discipleship platform that complements—never replaces—personal relationships, church community, and direct Scripture engagement.</p>
+                    <p>By 2025, we aim to serve over 1 million users worldwide, partner with 5,000+ churches, and continue developing adaptive technology that meets believers' unique needs while remaining grounded in biblical truth.</p>
                 </div>
             </div>
         </div>
@@ -252,7 +266,7 @@
         <div class="section-container">
             <div class="section-header" data-aos="fade-up">
                 <h2>Our Core Values</h2>
-                <p>The principles that guide our development and decision-making</p>
+                <p>Principles guiding our development and decisions</p>
             </div>
             <div class="values-grid">
                 <div class="value-card" data-aos="fade-up">
@@ -261,7 +275,7 @@
                     </div>
                     <div class="value-content">
                         <h3>Biblical Faithfulness</h3>
-                        <p>We are committed to Scripture as our ultimate authority, ensuring all content and interactions align with biblical teaching.</p>
+                        <p>Scripture as our ultimate authority, ensuring all content aligns with biblical teaching.</p>
                     </div>
                 </div>
                 <div class="value-card" data-aos="fade-up" data-aos-delay="100">
@@ -270,7 +284,7 @@
                     </div>
                     <div class="value-content">
                         <h3>Community Connection</h3>
-                        <p>We believe technology should enhance, not replace, personal relationships and local church involvement.</p>
+                        <p>Technology should enhance, not replace, personal relationships and local church involvement.</p>
                     </div>
                 </div>
                 <div class="value-card" data-aos="fade-up" data-aos-delay="200">
@@ -279,7 +293,7 @@
                     </div>
                     <div class="value-content">
                         <h3>Innovative Excellence</h3>
-                        <p>We pursue cutting-edge technology that serves spiritual growth with integrity and excellence.</p>
+                        <p>Pursuing cutting-edge technology that serves spiritual growth with integrity.</p>
                     </div>
                 </div>
                 <div class="value-card" data-aos="fade-up" data-aos-delay="300">
@@ -288,7 +302,7 @@
                     </div>
                     <div class="value-content">
                         <h3>Radical Accessibility</h3>
-                        <p>We believe quality discipleship resources should be available to all believers regardless of financial means.</p>
+                        <p>Quality discipleship resources available to all believers regardless of finances.</p>
                     </div>
                 </div>
             </div>
@@ -309,7 +323,7 @@
                     </div>
                     <h3>Sarah Johnson</h3>
                     <p class="role">Founder & CEO</p>
-                    <p class="bio">Former tech executive with a seminary degree who founded Ciple to bridge the gap between technology and discipleship.</p>
+                    <p class="bio">Former tech executive with a seminary degree who founded Ciple to bridge technology and discipleship.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -321,7 +335,7 @@
                     </div>
                     <h3>Mark Chen</h3>
                     <p class="role">Chief Technology Officer</p>
-                    <p class="bio">AI researcher and developer with a passion for creating technology that enhances human flourishing and spiritual growth.</p>
+                    <p class="bio">AI researcher and developer creating technology for human flourishing and spiritual growth.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
@@ -333,14 +347,14 @@
                     </div>
                     <h3>Rachel Williams</h3>
                     <p class="role">Theological Director</p>
-                    <p class="bio">Biblical scholar with a Ph.D. in Theology who ensures all content maintains biblical integrity and theological depth.</p>
+                    <p class="bio">Biblical scholar with a Ph.D. in Theology ensuring content maintains biblical integrity.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="text-center" style="margin-top: 3rem;" data-aos="fade-up">
+            <div class="text-center" style="margin-top: 3rem; display: none;" data-aos="fade-up">
                 <a href="team.html" class="secondary-cta">View Full Team</a>
             </div>
         </div>
@@ -351,12 +365,12 @@
         <div class="section-container">
             <div class="community-content">
                 <div class="community-text" data-aos="fade-right">
-                    <h2>Join Our Faithful Community</h2>
-                    <p>Support our mission to empower spiritual growth worldwide through accessible, AI-powered discipleship tools.</p>
+                    <h2>Join Our Community</h2>
+                    <p>Support our mission to empower spiritual growth worldwide.</p>
                 </div>
                 <div class="community-buttons" data-aos="fade-left">
-                    <a href="donate.html" class="primary-button">Donate</a>
-                    <a href="partner.html" class="secondary-button">Partner</a>
+                    <a href="support.html" class="primary-button">Donate</a>
+                    <a href="support.html#partner" class="secondary-button">Partner</a>
                 </div>
             </div>
         </div>
@@ -368,7 +382,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="index.html" class="footer-logo">
-                        <img src="images/ciple-logo.svg" alt="Ciple Logo">
+                        <img src="images/logoNoBackground.png" alt="Ciple Logo">
                         <span>Ciple</span>
                     </a>
                     <p>AI-powered discipleship tools for your faith journey.</p>
@@ -385,21 +399,16 @@
                         <a href="index.html#studies">Bible Studies</a>
                         <a href="index.html#prayer">Prayer Wall</a>
                         <a href="index.html#encouragement">Daily Encouragement</a>
-                        <a href="features.html">All Features</a>
+                        <a href="church.html">For Churches</a>
+                        <a href="support.html">Community</a>
                     </div>
                     <div class="link-column">
                         <h4>Company</h4>
                         <a href="about.html">About Us</a>
-                        <a href="mission.html">Our Mission</a>
-                        <a href="team.html">Team</a>
+                        <a href="support.html">Our Mission</a>
                         <a href="contact.html">Contact</a>
-                    </div>
-                    <div class="link-column">
-                        <h4>Resources</h4>
-                        <a href="blog.html">Blog</a>
-                        <a href="faq.html">FAQ</a>
-                        <a href="privacy.html">Privacy Policy</a>
-                        <a href="terms.html">Terms of Service</a>
+                        <a href="support.html#donate">Donate</a>
+                        <a href="support.html#partner">Partner With Us</a>
                     </div>
                 </div>
                 <div class="subscribe-form">
@@ -412,7 +421,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Ciple. All rights reserved.</p>
+                <p>&copy; 2025 Ciple. All rights reserved.</p>
             </div>
         </div>
     </footer>

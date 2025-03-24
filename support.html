@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Our Mission - Ciple - AI-Powered Bible Discipleship</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/logoNoBackground.png" type="image/png">
+    <style>
+        .hero.support-hero {
+            padding-top: 12rem;
+            padding-bottom: 6rem;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .donate-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+        
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .donation-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .donation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+            border-color: var(--primary-purple);
+        }
+        
+        .donation-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-purple);
+            margin-bottom: 1.5rem;
+        }
+        
+        .donation-description {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .custom-donation {
+            margin-top: 3rem;
+            background: var(--light-purple);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .custom-donation h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .donation-input-group {
+            display: flex;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+        }
+        
+        .donation-currency {
+            background: var(--primary-purple);
+            color: white;
+            border-radius: 10px 0 0 10px;
+            padding: 0.8rem 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .donation-input {
+            flex-grow: 1;
+            padding: 0.8rem 1.2rem;
+            border: none;
+            border-radius: 0 10px 10px 0;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .donation-input:focus {
+            outline: none;
+        }
+        
+        .impact-section {
+            padding: 6rem 0;
+            background-color: var(--light-purple);
+        }
+        
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .impact-stat {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .impact-stat:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        
+        .impact-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+        
+        .impact-label {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .impact-description {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .partner-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+        
+        .partner-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .partner-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        
+        .partner-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--light-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: var(--primary-purple);
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+        
+        .partner-card:hover .partner-icon {
+            background: var(--gradient-purple);
+            color: white;
+        }
+        
+        .partner-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+        
+        .partner-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        
+        .testimonial-section {
+            padding: 6rem 0;
+            background-color: var(--light-purple);
+        }
+        
+        .testimonial-slider {
+            margin-top: 3rem;
+            padding: 2rem;
+        }
+        
+        .testimonial-slide {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-quote {
+            position: relative;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 2rem;
+            padding: 0 2rem;
+        }
+        
+        .testimonial-quote::after {
+            content: "\"";  /* Proper quotation mark escape */
+            font-size: 4rem;
+            color: var(--primary-purple);
+            font-family: Georgia, serif;
+            position: absolute;
+            opacity: 0.2;
+            line-height: 1;
+            bottom: -4rem;
+            right: 0;
+        }
+
+        .testimonial-quote::before {
+            content: "\"";  /* Proper quotation mark escape */
+            font-size: 4rem;
+            color: var(--primary-purple);
+            font-family: Georgia, serif;
+            position: absolute;
+            opacity: 0.2;
+            line-height: 1;
+            top: -2rem;
+            left: 0;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .testimonial-role {
+            color: var(--primary-purple);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .faq-section {
+            padding: 6rem 0;
+            background-color: var(--white);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+        
+        .faq-question {
+            background: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary-dark);
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background: var(--light-purple);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: white;
+        }
+        
+        .faq-answer-content {
+            padding: 1rem 0 1.5rem;
+            color: #666;
+            line-height: 1.7;
+        }
+        
+        .faq-item.active .faq-question {
+            background: var(--light-purple);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        @media (max-width: 991px) {
+            .donation-options, .impact-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .partner-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .donation-options, .impact-stats {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .custom-donation {
+                padding: 2rem;
+            }
+            
+            .testimonial-quote {
+                font-size: 1.1rem;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/logoNoBackground.png" alt="Ciple Logo">
+                <span>Ciple</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <div class="dropdown">
+                    <a href="index.html#transform" class="dropdown-toggle">Features <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="index.html#studies">Bible Studies</a>
+                        <a href="index.html#prayer">Prayer Wall</a>
+                        <a href="index.html#encouragement">Daily Encouragement</a>
+                    </div>
+                </div>
+                <a href="index.html#nonprofit">Always Free</a>
+                <a href="support.html" class="active">Support</a>
+                <a href="about.html">About</a>
+                <a href="church.html">For Churches</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <a href="https://ciple.glide.page" class="nav-cta">Get Started for Free</a>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="index.html#transform">Features</a>
+            <a href="index.html#studies">Bible Studies</a>
+            <a href="index.html#prayer">Prayer Wall</a>
+            <a href="index.html#encouragement">Daily Encouragement</a>
+            <a href="index.html#nonprofit">Always Free</a>
+            <a href="support.html" class="active">Support</a>
+            <a href="about.html">About</a>
+            <a href="church.html">For Churches</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://ciple.glide.page" class="mobile-cta">Get Started for Free</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero support-hero">
+        <div class="section-container">
+            <div class="hero-content">
+                <h1 data-aos="fade-up">Support Our Mission</h1>
+                <p data-aos="fade-up" data-aos-delay="100">Join us in making discipleship resources accessible to believers worldwide.</p>
+                <div class="hero-buttons" style="margin-top: 2rem;" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#donate" class="cta-button">Donate Now</a>
+                    <a href="#partner" class="secondary-cta">Become a Partner</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-shape-1"></div>
+        <div class="hero-shape-2"></div>
+    </section>
+
+    <!-- Donate Section -->
+    <section id="donate" class="donate-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Make a Difference Today</h2>
+                <p>Your gift helps us keep Ciple free for believers worldwide</p>
+            </div>
+            
+            <div class="donation-options">
+                <div class="donation-card" data-aos="fade-up">
+                    <div class="donation-amount">$25</div>
+                    <p class="donation-description">Provides one month of AI-powered Bible study resources for 25 believers.</p>
+                    <a href="https://donate.stripe.com/ciple" class="cta-button">Donate $25</a>
+                </div>
+                <div class="donation-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="donation-amount">$50</div>
+                    <p class="donation-description">Helps us develop new features and improve existing tools for deeper discipleship.</p>
+                    <a href="https://donate.stripe.com/ciple" class="cta-button">Donate $50</a>
+                </div>
+                <div class="donation-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="donation-amount">$100</div>
+                    <p class="donation-description">Supports our outreach to churches and ministries in underserved regions.</p>
+                    <a href="https://donate.stripe.com/ciple" class="cta-button">Donate $100</a>
+                </div>
+            </div>
+            
+            <div class="custom-donation" data-aos="fade-up" data-aos-delay="300">
+                <h3>Custom Donation Amount</h3>
+                <div class="donation-input-group">
+                    <div class="donation-currency">$</div>
+                    <input type="number" class="donation-input" placeholder="Enter amount" min="1">
+                </div>
+                <a href="https://donate.stripe.com/ciple" class="cta-button">Donate Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Your Impact</h2>
+                <p>How your support is transforming lives through AI-powered discipleship</p>
+            </div>
+            
+            <div class="impact-stats">
+                <div class="impact-stat" data-aos="fade-up">
+                    <div class="impact-number">15,000+</div>
+                    <div class="impact-label">Active Users</div>
+                    <p class="impact-description">Believers around the world using Ciple for daily spiritual growth.</p>
+                </div>
+                <div class="impact-stat" data-aos="fade-up" data-aos-delay="100">
+                    <div class="impact-number">42</div>
+                    <div class="impact-label">Countries Reached</div>
+                    <p class="impact-description">Spanning 6 continents and continuing to expand our global reach.</p>
+                </div>
+                <div class="impact-stat" data-aos="fade-up" data-aos-delay="200">
+                    <div class="impact-number">100%</div>
+                    <div class="impact-label">Free Access</div>
+                    <p class="impact-description">Commitment to keeping all core discipleship resources freely available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Section -->
+    <section id="partner" class="partner-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Partnership Opportunities</h2>
+                <p>Join us as a sustaining partner in discipleship innovation</p>
+            </div>
+            
+            <div class="partner-cards">
+                <div class="partner-card" data-aos="fade-up">
+                    <div class="partner-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="partner-title">Monthly Partner</h3>
+                    <p class="partner-description">Become a monthly supporter with a recurring gift that provides sustainable funding for ongoing development and global expansion of Ciple's discipleship tools.</p>
+                    <a href="https://donate.stripe.com/ciple" class="cta-button">Become a Monthly Partner</a>
+                </div>
+                <div class="partner-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="partner-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3 class="partner-title">Ministry Partner</h3>
+                    <p class="partner-description">For churches, ministries, and organizations who want to collaborate more deeply through financial support, promotional partnerships, and strategic advisory roles.</p>
+                    <a href="contact.html" class="cta-button">Contact About Partnership</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Partner Testimonials</h2>
+                <p>Hear from those who support our mission</p>
+            </div>
+            
+            <div class="testimonial-slider" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-slide">
+                    <p class="testimonial-quote">Supporting Ciple monthly has been one of the most meaningful investments I've made. Knowing that my contribution helps believers around the world deepen their walk with Christ gives me such joy. The transparency in how funds are used gives me confidence in this partnership.</p>
+                    <div class="testimonial-author">Michael Torres</div>
+                    <div class="testimonial-role">Monthly Supporter since 2023</div>
+                </div>
+                <!-- More testimonials would be included in a real slider -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about donating and partnering with us</p>
+            </div>
+            
+            <div class="faq-container" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-item active">
+                    <div class="faq-question">
+                        <span>Is my donation tax-deductible?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes, Ciple operates as a registered 501(c)(3) non-profit organization, making all donations tax-deductible for U.S. taxpayers. You will receive a receipt for your tax records after each donation.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How are donations used?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Donations directly support the development and maintenance of Ciple's AI-powered discipleship tools, server costs, theological oversight, outreach to underserved regions, and minimal administrative expenses. We are committed to financial transparency and publish annual reports on our website.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I specify how my donation is used?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Yes, you can designate your gift for specific initiatives such as global outreach, technology development, or theological resources. Simply include a note with your donation, and we will honor your preferences.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            We accept credit/debit cards, PayPal, bank transfers, and cryptocurrency donations. For other methods or questions about larger gifts, please contact our support team directly.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can churches partner with Ciple?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Churches can partner with us through financial support, promotional partnerships, beta testing new features, and providing theological feedback. We offer special partnership programs for ministries of all sizes. Contact us for more details.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="download" id="impact-cta">
+        <div class="download-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="section-container">
+            <div class="download-content">
+                <h2>Ready to Make an Impact?</h2>
+                <p>Join our mission to make quality discipleship accessible to believers worldwide.</p>
+                <div class="always-free-banner centered">
+                    <i class="fas fa-heart"></i>
+                    <span>Every Donation Makes a Difference</span>
+                </div>
+                <div class="store-buttons centered" style="margin-top: 2rem;">
+                    <a href="#donate" class="store-button apple" style="background: var(--gradient-purple); color: white;">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <div class="store-button-text">
+                            <span>Support Us</span>
+                            <strong>Donate Today</strong>
+                        </div>
+                    </a>
+                    <a href="contact.html" class="store-button google" style="background: transparent; border: 2px solid var(--primary-purple); color: var(--primary-purple);">
+                        <i class="fas fa-envelope"></i>
+                        <div class="store-button-text">
+                            <span>Questions?</span>
+                            <strong>Contact Us</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <img src="images/logoNoBackground.png" alt="Ciple Logo">
+                        <span>Ciple</span>
+                    </a>
+                    <p>AI-powered discipleship tools for your faith journey.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>Features</h4>
+                        <a href="index.html#studies">Bible Studies</a>
+                        <a href="index.html#prayer">Prayer Wall</a>
+                        <a href="index.html#encouragement">Daily Encouragement</a>
+                        <a href="church.html">For Churches</a>
+                        <a href="support.html">Community</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>Company</h4>
+                        <a href="about.html">About Us</a>
+                        <a href="support.html">Our Mission</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="support.html#donate">Donate</a>
+                        <a href="support.html#partner">Partner With Us</a>
+                    </div>
+                </div>
+                <div class="subscribe-form">
+                    <h4>Subscribe to Updates</h4>
+                    <p>Stay updated with the latest features and news.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Ciple. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all FAQs
+                    faqItems.forEach(faqItem => {
+                        faqItem.classList.remove('active');
+                    });
+                    
+                    // If clicked item wasn't active, open it
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

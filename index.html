@@ -8,21 +8,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/logoNoBackground.png" type="image/png">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-content">
             <a href="index.html" class="logo">
-                <img src="images/ciple-logo.svg" alt="Ciple Logo">
+                <img src="images/logoNoBackground.png" alt="Ciple Logo">
                 <span>Ciple</span>
             </a>
             <div class="nav-links">
-                <a href="#transform">Features</a>
-                <a href="#studies">Bible Studies</a>
-                <a href="#prayer">Prayer Wall</a>
-                <a href="#encouragement">Daily Encouragement</a>
+                <a href="index.html" class="active">Home</a>
+                <div class="dropdown">
+                    <a href="index.html#transform" class="dropdown-toggle">Features <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="index.html#studies">Bible Studies</a>
+                        <a href="index.html#prayer">Prayer Wall</a>
+                        <a href="index.html#encouragement">Daily Encouragement</a>
+                    </div>
+                </div>
+                <a href="index.html#nonprofit">Always Free</a>
+                <a href="support.html">Support</a>
                 <a href="about.html">About</a>
+                <a href="church.html">For Churches</a>
                 <a href="contact.html">Contact</a>
             </div>
             <a href="https://ciple.glide.page" class="nav-cta">Get Started for Free</a>
@@ -31,11 +40,15 @@
             </button>
         </div>
         <div class="mobile-menu" id="mobile-menu">
-            <a href="#transform">Features</a>
-            <a href="#studies">Bible Studies</a>
-            <a href="#prayer">Prayer Wall</a>
-            <a href="#encouragement">Daily Encouragement</a>
+            <a href="index.html">Home</a>
+            <a href="index.html#transform">Features</a>
+            <a href="index.html#studies">Bible Studies</a>
+            <a href="index.html#prayer">Prayer Wall</a>
+            <a href="index.html#encouragement">Daily Encouragement</a>
+            <a href="index.html#nonprofit">Always Free</a>
+            <a href="support.html">Support</a>
             <a href="about.html">About</a>
+            <a href="church.html">For Churches</a>
             <a href="contact.html">Contact</a>
             <a href="https://ciple.glide.page" class="mobile-cta">Get Started for Free</a>
         </div>
@@ -45,15 +58,15 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1 data-aos="fade-up">Transform Your Faith Journey with AI-Powered Discipleship</h1>
-            <p data-aos="fade-up" data-aos-delay="100">Ciple isn't just another Bible app. It's your personal discipleship companion, using AI to deliver personalized spiritual guidance, theological wisdom, and meaningful growth metrics.</p>
+            <p data-aos="fade-up" data-aos-delay="100">Ciple is your personal discipleship companion, using AI to deliver personalized guidance, theological wisdom, and meaningful growth metrics.</p>
             <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
                 <a href="https://ciple.glide.page" class="cta-button">Get Started for Free</a>
                 <a href="#learn-more" class="secondary-cta">See How It Works</a>
             </div>
             <div class="hero-badges" data-aos="fade-up" data-aos-delay="300">
-                <div class="hero-badge">
-                    <i class="fas fa-user-shield"></i>
-                    <span>Privacy Focused</span>
+                <div class="hero-badge" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-bible"></i>
+                    <span>Scripture-Focused</span>
                 </div>
                 <div class="hero-badge">
                     <i class="fas fa-seedling"></i>
@@ -69,6 +82,82 @@
         <div class="hero-shape-2"></div>
     </section>
 
+    <!-- App Preview Section - with test5s.mp4 -->
+    <!-- <section class="app-preview">
+        <div class="section-container">
+            <div class="app-preview-content">
+                <div class="app-preview-text" data-aos="fade-right">
+                    <h2>Experience Discipleship in a New Way</h2>
+                    <p>Bringing together prayer, study, and community in one seamless experience with an intuitive interface for everyone.</p>
+                    
+                    <div class="always-free-banner">
+                        <i class="fas fa-gift"></i>
+                        <span>Always Free - No Subscriptions Ever</span>
+                    </div>
+                    
+                    <p>Join thousands of believers growing their faith with Ciple.</p>
+                    
+                    <div class="store-buttons" style="justify-content: flex-start;">
+                        <a href="https://ciple.glide.page" class="store-button apple">
+                            <i class="fab fa-apple"></i>
+                            <div class="store-button-text">
+                                <span>Download on the</span>
+                                <strong>App Store</strong>
+                            </div>
+                        </a>
+                        <a href="https://ciple.glide.page" class="store-button google">
+                            <i class="fab fa-google-play"></i>
+                            <div class="store-button-text">
+                                <span>Get it on</span>
+                                <strong>Google Play</strong>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="app-preview-image" data-aos="fade-left">
+                    <video autoplay muted loop class="floating-video" style="width: 100%; max-width: 600px;">
+                        <source src="images/highfives.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+
+    <!-- Transform Section -->
+    <section class="transform" id="transform" style="padding-bottom: 12rem;">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Transform Your Spiritual Growth</h2>
+                <p>Revolutionizing faith development through AI-powered personalization</p>
+            </div>
+            <div class="transform-grid">
+                <div class="transform-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Discipleship Mentor</h3>
+                    <p>Personalized guidance, theological insights, and spiritual advice tailored to your unique journey.</p>
+                </div>
+                <div class="transform-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Track Spiritual Growth</h3>
+                    <p>Monitor progress with our Spiritual Blueprint tool suggesting adaptive next steps for your development.</p>
+                </div>
+                <div class="transform-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Community Connection</h3>
+                    <p>Bridge the gap between personal devotion and community with smart accountability features.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- App Preview Section -->
     <section class="app-preview" id="learn-more">
         <div class="section-container">
@@ -78,66 +167,36 @@
                 </div>
                 <div class="app-preview-text" data-aos="fade-up" data-aos-delay="200">
                     <h2>Experience Scripture Like Never Before</h2>
-                    <p>Ciple brings the Bible to life through intelligent, personalized interactions that adapt to your spiritual journey.</p>
+                    <p>Ciple brings the Bible to life through intelligent interactions that adapt to your spiritual journey.</p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> AI-powered theological insights that deepen your understanding</li>
-                        <li><i class="fas fa-check-circle"></i> Personalized faith challenges based on your spiritual growth</li>
-                        <li><i class="fas fa-check-circle"></i> Community prayer support that connects believers worldwide</li>
-                        <li><i class="fas fa-check-circle"></i> Bible study tools that make complex passages accessible</li>
+                        <li><i class="fas fa-check-circle"></i> AI-powered theological insights that deepen understanding</li>
+                        <li><i class="fas fa-check-circle"></i> Faith challenges based on your spiritual growth</li>
+                        <li><i class="fas fa-check-circle"></i> Community prayer support connecting believers</li>
+                        <li><i class="fas fa-check-circle"></i> Bible study tools making complex passages accessible</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Transform Section -->
-    <section class="transform" id="transform">
-        <div class="section-container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Transform Your Spiritual Growth</h2>
-                <p>Experience a revolutionary approach to faith development through AI-powered personalization</p>
-            </div>
-            <div class="transform-grid">
-                <div class="transform-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>AI-Powered Discipleship Mentor</h3>
-                    <p>Receive personalized guidance, theological insights, and spiritual advice tailored to your unique faith journey.</p>
-                </div>
-                <div class="transform-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Track Spiritual Growth</h3>
-                    <p>Monitor your progress with our Spiritual Blueprint tool that adaptively suggests next steps for your faith development.</p>
-                </div>
-                <div class="transform-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Community Connection</h3>
-                    <p>Bridge the gap between personal devotion and community engagement with smart accountability features.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Nonprofit Section -->
-    <section class="nonprofit">
+    <section class="nonprofit" id="nonprofit">
         <div class="section-container">
             <div class="nonprofit-content">
                 <div class="nonprofit-text" data-aos="fade-right">
-                    <h2>Experience a transformative faith journey without financial barriers.</h2>
-                    <p>At Ciple, we believe that spiritual growth should be accessible to everyone. Matthew 10:8 reminds us, 'You received without paying; give without pay,' reflecting our commitment to a nonprofit model that empowers users to pay it forward.</p>
+                    <h2>Faith growth without financial barriers</h2>
+                    <p>At Ciple, we believe spiritual growth should be accessible to everyone. Matthew 10:8 reminds us, 'You received without paying; give without pay,' reflecting our nonprofit model's commitment.</p>
                     <div class="always-free-banner">
                         <i class="fas fa-infinity"></i>
                         <span>Always Free. No Subscriptions. No Hidden Fees.</span>
                     </div>
-                    <a href="about.html" class="text-button">Learn about our mission <i class="fas fa-arrow-right"></i></a>
+                    <div class="nonprofit-buttons">
+                        <a href="https://ciple.glide.page" class="cta-button">Get Started</a>
+                        <a href="about.html" class="text-button">Learn about our mission <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
                 <div class="nonprofit-image" data-aos="fade-left">
-                    <img src="images/community.jpg" alt="Happy community of believers">
+                    <img src="images/worship.webp" alt="Happy community of believers">
                 </div>
             </div>
         </div>
@@ -147,7 +206,7 @@
     <section class="features-overview">
         <div class="section-container">
             <div class="section-header centered" data-aos="fade-up">
-                <h2>Features Designed for Spiritual Growth</h2>
+                <h2>Features for Spiritual Growth</h2>
                 <p>Comprehensive tools to enhance your faith journey</p>
             </div>
             <div class="features-grid">
@@ -155,24 +214,24 @@
                     <div class="feature-icon">
                         <i class="fas fa-book-open"></i>
                     </div>
-                    <h3>Enhance your understanding with tailored Bible studies and reflections.</h3>
-                    <p>Dive deeper into Scripture with contextual insights, theological Q&A, and personalized study plans.</p>
+                    <h3>Enhance understanding with tailored Bible studies</h3>
+                    <p>Explore Scripture with contextual insights, theological Q&A, and personalized study plans.</p>
                     <a href="#studies" class="feature-link">Explore Bible Studies <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
                     <div class="feature-icon">
                         <i class="fas fa-pray"></i>
                     </div>
-                    <h3>Connect with others through our dedicated prayer wall.</h3>
-                    <p>Share and receive prayer requests, maintain a personal prayer journal, and grow in your prayer life.</p>
+                    <h3>Connect through a dedicated prayer wall</h3>
+                    <p>Share requests, maintain a personal prayer journal, and grow your prayer life with others.</p>
                     <a href="#prayer" class="feature-link">Join the Prayer Wall <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
                     <div class="feature-icon">
                         <i class="fas fa-sun"></i>
                     </div>
-                    <h3>Receive daily encouragement to uplift your spirit and faith.</h3>
-                    <p>Start each day with personalized scripture, challenges, and inspiring testimonies to keep you motivated.</p>
+                    <h3>Receive daily encouragement for your faith</h3>
+                    <p>Start each day with personalized scripture, challenges, and inspiring content to stay motivated.</p>
                     <a href="#encouragement" class="feature-link">See Daily Encouragement <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -184,40 +243,40 @@
         <div class="section-container">
             <div class="two-column-section">
                 <div class="column-text" data-aos="fade-right">
-                    <h2>Dive Deeper into Scripture with AI-Enhanced Bible Studies</h2>
-                    <p>Our intelligent study tools help you engage with Scripture in meaningful ways, providing context, insights, and personalized learning paths.</p>
+                    <h2>Deepen Understanding with Bible Studies</h2>
+                    <p>Guided studies offering fresh insights and practical applications for both new and seasoned believers.</p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Theological Q&A with scripture-based answers</li>
-                        <li><i class="fas fa-check-circle"></i> In-depth verse breakdowns with historical context</li>
-                        <li><i class="fas fa-check-circle"></i> Search functionality to find specific passages</li>
-                        <li><i class="fas fa-check-circle"></i> Personal study history and saved questions</li>
+                        <li><i class="fas fa-check-circle"></i> AI-powered verse explanations</li>
+                        <li><i class="fas fa-check-circle"></i> Historical context and background</li>
+                        <li><i class="fas fa-check-circle"></i> Guided questions for reflection</li>
+                        <li><i class="fas fa-check-circle"></i> Study progress tracking</li>
                     </ul>
-                    <a href="features.html" class="text-button">Learn more about Bible Study features <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://ciple.glide.page" class="cta-button">Start Studying</a>
                 </div>
                 <div class="column-image" data-aos="fade-left">
-                    <img src="images/bible-study-mockup.svg" alt="Bible Study Feature Mockup">
+                    <img src="images/discipleship.jpg" alt="Bible Study" class="feature-image">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Prayer Wall Section -->
+    <!-- Prayer Wall Section - with worship2.webp -->
     <section class="prayer" id="prayer">
         <div class="section-container">
-            <div class="two-column-section reverse">
+            <div class="two-column-section">
                 <div class="column-image" data-aos="fade-right">
-                    <img src="images/prayer-wall-mockup.svg" alt="Prayer Wall Feature Mockup">
+                    <img src="images/worship2.webp" alt="Prayer Community" class="feature-image">
                 </div>
                 <div class="column-text" data-aos="fade-left">
-                    <h2>Unite in Prayer with Believers Around the World</h2>
-                    <p>Share your burdens and support fellow believers through our community prayer features, designed to create a global network of spiritual support.</p>
+                    <h2>Connect Through Prayer in Community</h2>
+                    <p>A sacred space for believers to support one another through shared prayer.</p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Anonymous prayer requests and support</li>
-                        <li><i class="fas fa-check-circle"></i> Personal prayer journal with AI prompts</li>
-                        <li><i class="fas fa-check-circle"></i> Prayer teams for church groups</li>
-                        <li><i class="fas fa-check-circle"></i> Voice-to-text prayer recording</li>
+                        <li><i class="fas fa-check-circle"></i> Share and receive prayer requests</li>
+                        <li><i class="fas fa-check-circle"></i> Pray anonymously or publicly</li>
+                        <li><i class="fas fa-check-circle"></i> Track answered prayers</li>
+                        <li><i class="fas fa-check-circle"></i> Join prayer groups by topic</li>
                     </ul>
-                    <a href="features.html" class="text-button">Learn more about Prayer features <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://ciple.glide.page" class="cta-button">Join Prayer Wall</a>
                 </div>
             </div>
         </div>
@@ -226,24 +285,43 @@
     <!-- Daily Encouragement Section -->
     <section class="encouragement" id="encouragement">
         <div class="section-container">
-            <div class="section-header centered">
-                <h2>Daily Faith Encouragement</h2>
-                <p>Start each day with purpose through Scripture, challenges, and personal growth.</p>
-            </div>
             <div class="two-column-section reverse">
-                <div class="column-text">
-                    <h2>Build Lasting Faith Habits That Transform Your Life</h2>
-                    <p>Begin each day with Scripture that speaks directly to your journey, paired with actionable challenges that strengthen your spiritual muscles and deepen your relationship with God.</p>
+                <div class="column-text" data-aos="fade-left">
+                    <h2>Daily Encouragement for Your Faith</h2>
+                    <p>Tailored spiritual content to help you grow consistently in your walk.</p>
                     <ul class="feature-list">
-                        <li><i class="fas fa-check-circle"></i> Personalized daily verse and reflection</li>
-                        <li><i class="fas fa-check-circle"></i> Faith challenges based on your goals</li>
-                        <li><i class="fas fa-check-circle"></i> Prayer reminders</li>
-                        <li><i class="fas fa-check-circle"></i> Growth tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Daily verse with inspiration</li>
+                        <li><i class="fas fa-check-circle"></i> Personalized devotional content</li>
+                        <li><i class="fas fa-check-circle"></i> Growth challenges and goals</li>
+                        <li><i class="fas fa-check-circle"></i> Reflection prompts and journaling</li>
                     </ul>
-                    <a href="#" class="text-button">Learn more about daily features <i class="fas fa-arrow-right"></i></a>
+                    <a href="https://ciple.glide.page" class="cta-button">Get Daily Encouragement</a>
                 </div>
-                <div class="column-image">
-                    <img src="images/daily-encouragement-mockup.svg" alt="Daily Encouragement Feature">
+                <div class="column-image" data-aos="fade-right">
+                    <div class="iphone-container">
+                        <div class="iphone-frame">
+                            <div class="iphone-screen">
+                                <div class="daily-notification">
+                                    <div class="notification-header">
+                                        <img src="images/logoNoBackground.png" class="notification-icon">
+                                        <span>Ciple · now</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="verse-text">"Trust in the LORD with all your heart, and do not lean on your own understanding." - Proverbs 3:5</p>
+                                    </div>
+                                </div>
+                                <div class="daily-notification" style="animation-delay: 2s;">
+                                    <div class="notification-header">
+                                        <img src="images/logoNoBackground.png" class="notification-icon">
+                                        <span>Ciple · now</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="challenge-text">Today's Challenge: Spend 10 minutes in silent prayer</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -259,12 +337,12 @@
         <div class="section-container">
             <div class="download-content">
                 <h2>Begin Your Faith Journey Today</h2>
-                <p>Join thousands of believers who are growing their faith with Ciple's AI-powered discipleship tools.</p>
+                <p>Join thousands growing with Ciple's AI-powered discipleship tools.</p>
                 <div class="always-free-banner centered">
                     <i class="fas fa-infinity"></i>
                     <span>Always Free. No Subscriptions. No Hidden Fees.</span>
                 </div>
-                <div class="store-buttons">
+                <div class="store-buttons centered">
                     <a href="https://ciple.glide.page" class="store-button apple">
                         <i class="fab fa-apple"></i>
                         <div class="store-button-text">
@@ -284,13 +362,13 @@
         </div>
     </section>
 
-    <!-- Partner Section -->
+    <!-- Partner Section (Reverting to the previous version) -->
     <section class="partner-section">
         <div class="section-container">
             <div class="partner-content">
                 <div class="partner-text">
                     <h2>Support Our Mission</h2>
-                    <p>Join our community of supporters who believe in making spiritual growth tools accessible to everyone.</p>
+                    <p>Join supporters making spiritual growth tools accessible to everyone.</p>
                     <div class="partner-stats">
                         <div class="stat-item">
                             <span class="stat-number">10K+</span>
@@ -306,9 +384,28 @@
                         </div>
                     </div>
                 </div>
-                <div class="partner-buttons">
-                    <a href="#" class="primary-button">Donate</a>
-                    <a href="#" class="secondary-button">Become a Partner</a>
+                <div class="partner-buttons" style="margin-top: 4rem;">
+                    <a href="support.html" class="primary-button">Donate</a>
+                    <a href="support.html#partner" class="secondary-button">Become a Partner</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <video autoplay muted loop class="background-video" style="object-position: center 25%;">
+            <source src="images/happyCommunity.mp4" type="video/mp4">
+        </video>
+        <div class="section-container">
+            <div class="community-content" data-aos="fade-up">
+                <div class="community-text">
+                    <h2>Join a Growing Community of Believers</h2>
+                    <p>Connect, share your journey, and grow together in faith.</p>
+                </div>
+                <div class="community-buttons">
+                    <a href="https://ciple.glide.page" class="primary-button">Join Community</a>
+                    <a href="about.html" class="secondary-button">Learn More</a>
                 </div>
             </div>
         </div>
@@ -320,7 +417,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="index.html" class="footer-logo">
-                        <img src="images/ciple-logo.svg" alt="Ciple Logo">
+                        <img src="images/logoNoBackground.png" alt="Ciple Logo">
                         <span>Ciple</span>
                     </a>
                     <p>AI-powered discipleship tools for your faith journey.</p>
@@ -337,21 +434,16 @@
                         <a href="#studies">Bible Studies</a>
                         <a href="#prayer">Prayer Wall</a>
                         <a href="#encouragement">Daily Encouragement</a>
-                        <a href="features.html">All Features</a>
+                        <a href="church.html">For Churches</a>
+                        <a href="support.html">Community</a>
                     </div>
                     <div class="link-column">
                         <h4>Company</h4>
                         <a href="about.html">About Us</a>
-                        <a href="mission.html">Our Mission</a>
-                        <a href="team.html">Team</a>
+                        <a href="support.html">Our Mission</a>
                         <a href="contact.html">Contact</a>
-                    </div>
-                    <div class="link-column">
-                        <h4>Resources</h4>
-                        <a href="blog.html">Blog</a>
-                        <a href="faq.html">FAQ</a>
-                        <a href="privacy.html">Privacy Policy</a>
-                        <a href="terms.html">Terms of Service</a>
+                        <a href="support.html#donate">Donate</a>
+                        <a href="support.html#partner">Partner With Us</a>
                     </div>
                 </div>
                 <div class="subscribe-form">
@@ -364,10 +456,96 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Ciple. All rights reserved.</p>
+                <p>&copy; 2025 Ciple. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <style>
+        .iphone-container {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+        
+        .iphone-frame {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            transform: rotateY(-10deg) rotateX(5deg);
+            transform-style: preserve-3d;
+        }
+        
+        .iphone-screen {
+            background: #000;
+            border-radius: 30px;
+            height: calc(100% - 20px);
+            width: calc(100% - 20px);
+            overflow: hidden;
+            position: relative;
+            background-image: url('images/app-mockup.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .daily-notification {
+            position: absolute;
+            top: 60px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-100px);
+            opacity: 0;
+            animation: slideIn 6s infinite;
+        }
+        
+        .daily-notification:nth-child(2) {
+            top: 180px;
+            animation-delay: 2s;
+        }
+        
+        .notification-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .notification-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        
+        .notification-content {
+            font-size: 14px;
+        }
+        
+        .verse-text, .challenge-text {
+            margin: 0;
+            color: #333;
+        }
+        
+        @keyframes slideIn {
+            0%, 100% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            10%, 90% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/main.js"></script>
