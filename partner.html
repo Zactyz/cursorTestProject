@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="styles-common.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/logoNoBackground.png" type="image/png">
     <style>
@@ -216,36 +217,8 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="images/logoNoBackground.png" alt="Ciple Logo">
-                <span>Ciple</span>
-            </a>
-            <div class="nav-links">
-                <a href="index.html#transform">Features</a>
-                <a href="index.html#studies">Bible Studies</a>
-                <a href="index.html#prayer">Prayer Wall</a>
-                <a href="index.html#encouragement">Daily Encouragement</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <a href="https://ciple.glide.page" class="nav-cta">Get Started for Free</a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        <div class="mobile-menu" id="mobile-menu">
-            <a href="index.html#transform">Features</a>
-            <a href="index.html#studies">Bible Studies</a>
-            <a href="index.html#prayer">Prayer Wall</a>
-            <a href="index.html#encouragement">Daily Encouragement</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="https://ciple.glide.page" class="mobile-cta">Get Started for Free</a>
-        </div>
-    </nav>
+    <!-- Navigation - Using component system -->
+    <div data-component="header"></div>
 
     <!-- Hero Section -->
     <section class="partner-hero">
@@ -449,61 +422,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="section-container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo">
-                        <img src="images/logoNoBackground.png" alt="Ciple Logo">
-                        <span>Ciple</span>
-                    </a>
-                    <p>AI-powered discipleship tools for your faith journey.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <div class="link-column">
-                        <h4>Features</h4>
-                        <a href="index.html#studies">Bible Studies</a>
-                        <a href="index.html#prayer">Prayer Wall</a>
-                        <a href="index.html#encouragement">Daily Encouragement</a>
-                        <a href="features.html">All Features</a>
-                    </div>
-                    <div class="link-column">
-                        <h4>Company</h4>
-                        <a href="about.html">About Us</a>
-                        <a href="mission.html">Our Mission</a>
-                        <a href="team.html">Team</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
-                    <div class="link-column">
-                        <h4>Resources</h4>
-                        <a href="blog.html">Blog</a>
-                        <a href="faq.html">FAQ</a>
-                        <a href="privacy.html">Privacy Policy</a>
-                        <a href="terms.html">Terms of Service</a>
-                    </div>
-                </div>
-                <div class="subscribe-form">
-                    <h4>Subscribe to Updates</h4>
-                    <p>Stay updated with the latest features and news.</p>
-                    <form>
-                        <input type="email" placeholder="Your email address">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Ciple. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer - Using component system -->
+    <div data-component="footer"></div>
 
+    <!-- Load our custom component system -->
+    <script src="js/components.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/main.js"></script>
     <script>
