@@ -34,6 +34,7 @@ async function loadComponents() {
             initComponentScripts(componentName);
         } catch (error) {
             console.error(error);
+            element.innerHTML = `<div class="component-error">Failed to load ${componentName} component</div>`;
         }
     }
 }

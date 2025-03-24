@@ -285,11 +285,12 @@ img {
 .hero-buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 3rem;
 }
 
-.cta-button {
+.cta-button, .primary-button {
     padding: 1rem 2rem;
     background: var(--gradient-purple);
     color: white;
@@ -297,6 +298,11 @@ img {
     font-weight: 600;
     transition: var(--transition);
     box-shadow: 0 5px 15px rgba(103,45,144,0.3);
+    line-height: normal;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px; /* Fixed height to ensure consistency */
 }
 
 .cta-button:hover {
@@ -304,13 +310,19 @@ img {
     box-shadow: 0 8px 25px rgba(103,45,144,0.4);
 }
 
-.secondary-cta {
+.secondary-cta, .secondary-button {
     padding: 1rem 2rem;
     border: 2px solid var(--primary-purple);
     color: var(--primary-purple);
     border-radius: 50px;
     font-weight: 600;
     transition: var(--transition);
+    line-height: normal;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 52px; /* Match primary button height */
+    box-sizing: border-box;
 }
 
 .secondary-cta:hover {
@@ -673,7 +685,7 @@ img {
 }
 
 .column-image:hover img {
-    transform: scale(1.03) rotate(1deg);
+    transform: scale(1.03);
 }
 
 /* Bible Studies Section */

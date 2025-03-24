@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="styles-common.css">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="images/logoNoBackground.png" type="image/png">
     <style>
@@ -491,7 +490,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation - Using component system -->
+    <!-- Navigation - Using component -->
     <div data-component="header"></div>
 
     <!-- Hero Section -->
@@ -565,7 +564,7 @@
                 </div>
                 <div class="dashboard-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="dashboard-image">
-                        <img src="https://images.unsplash.com/photo-1514939775307-d44e76771673?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Prayer Requests" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                        <img src="images/prayer.webp" alt="Prayer Requests" style="display: block; width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div class="dashboard-content">
                         <span class="dashboard-tag">Prayer</span>
@@ -792,26 +791,11 @@
         </div>
     </section>
 
-    <!-- Footer - Using component system -->
+    <!-- Footer - Using component -->
     <div data-component="footer"></div>
 
-    <!-- Load our custom component system -->
-    <script src="js/components.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease',
-            once: true,
-            offset: 100
-        });
-        
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('active');
-            this.classList.toggle('active');
-        });
-    </script>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html> 
