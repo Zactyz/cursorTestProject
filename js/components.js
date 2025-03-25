@@ -12,7 +12,7 @@ async function loadComponents() {
     
     for (const element of componentElements) {
         const componentName = element.getAttribute('data-component');
-        const filePath = `_${componentName}.html`;
+        const filePath = `${componentName}.html`;
         
         try {
             const response = await fetch(filePath);
