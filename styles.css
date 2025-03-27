@@ -126,6 +126,7 @@ img {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
+    min-width: 0;
 }
 
 .logo {
@@ -155,10 +156,14 @@ img {
 
 .nav-links {
     display: flex;
+    align-items: center;
     gap: 2rem;
+    flex-wrap: nowrap;
+    min-width: 0;
 }
 
 .nav-links a {
+    white-space: nowrap;
     color: var(--primary-dark);
     font-weight: 500;
     position: relative;
@@ -193,6 +198,7 @@ img {
 }
 
 .nav-cta {
+    white-space: nowrap;
     padding: 0.6rem 1.5rem;
     background: var(--gradient-purple);
     color: white;
@@ -204,6 +210,7 @@ img {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-left: 2rem;
 }
 
 .free-badge {
@@ -229,20 +236,46 @@ img {
     font-size: 1.5rem;
     color: var(--primary-dark);
     cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
 }
 
 .mobile-menu {
     display: none;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
+    height: 100vh;
     background: white;
-    padding: 1rem 0;
+    padding: 5rem 2rem 2rem;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    z-index: 1000;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-menu a {
+    font-size: 1.2rem;
+    padding: 0.8rem 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.mobile-menu a.mobile-cta {
+    margin-top: 1rem;
+    background: var(--gradient-purple);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: none;
+    font-weight: 600;
 }
 
 /* Hero Section */
@@ -1398,6 +1431,14 @@ img {
         align-items: center;
         gap: 1.5rem;
     }
+    
+    .nav-links, .nav-cta {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1407,6 +1448,10 @@ img {
     
     .mobile-menu-btn {
         display: block;
+    }
+    
+    .mobile-menu {
+        display: none;
     }
     
     .mobile-menu.active {

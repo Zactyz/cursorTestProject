@@ -12,7 +12,7 @@ async function loadComponents() {
     
     for (const element of componentElements) {
         const componentName = element.getAttribute('data-component');
-        const filePath = `${componentName}.html`;
+        const filePath = `_${componentName}.html`;
         
         try {
             const response = await fetch(filePath);
@@ -28,6 +28,7 @@ async function loadComponents() {
             // If it's a header, check for current page to add active class
             if (componentName === 'header') {
                 highlightCurrentPage();
+                setupMobileMenu();
             }
             
             // Initialize any scripts the component might need
@@ -66,21 +67,36 @@ function highlightCurrentPage() {
 }
 
 /**
+ * Sets up the mobile menu functionality
+ */
+function setupMobileMenu() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (menuBtn && mobileMenu) {
+        // Toggle menu on button click
+        menuBtn.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+        });
+        
+        // Close menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Close menu immediately
+                mobileMenu.classList.remove('active');
+                menuBtn.classList.remove('active');
+            });
+        });
+    }
+}
+
+/**
  * Initialize any scripts needed by specific components
  */
 function initComponentScripts(componentName) {
     if (componentName === 'header') {
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (menuBtn && mobileMenu) {
-            menuBtn.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-                menuBtn.classList.toggle('active');
-            });
-        }
-        
         // Sticky Navbar
         const navbar = document.getElementById('navbar');
         let lastScrollTop = 0;
