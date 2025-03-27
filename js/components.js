@@ -12,7 +12,10 @@ async function loadComponents() {
     
     for (const element of componentElements) {
         const componentName = element.getAttribute('data-component');
-        const filePath = `${componentName}.html`;
+        
+        // Get base URL for GitHub Pages compatibility
+        const baseUrl = getBaseUrl();
+        const filePath = `${baseUrl}${componentName}.html`;
         
         try {
             const response = await fetch(filePath);
@@ -38,6 +41,32 @@ async function loadComponents() {
             element.innerHTML = `<div class="component-error">Failed to load ${componentName} component</div>`;
         }
     }
+}
+
+/**
+ * Gets the base URL for the current environment (local or GitHub Pages)
+ */
+function getBaseUrl() {
+    // Get the current URL
+    const url = window.location.href;
+    
+    // Check if running on GitHub Pages
+    if (url.includes('github.io')) {
+        // Extract the repository name from the URL
+        const pathSegments = url.split('/');
+        // Finding the segment after github.io
+        const githubIoIndex = pathSegments.findIndex(segment => segment.includes('github.io'));
+        
+        if (githubIoIndex !== -1 && pathSegments.length > githubIoIndex + 1) {
+            // Repository is the next segment after github.io
+            const repoName = pathSegments[githubIoIndex + 1];
+            return `/${repoName}/`;
+        }
+        return '/'; // Fallback
+    }
+    
+    // Local development - return empty string for relative path
+    return '';
 }
 
 /**
