@@ -12,10 +12,7 @@ async function loadComponents() {
     
     for (const element of componentElements) {
         const componentName = element.getAttribute('data-component');
-        
-        // Get base URL for GitHub Pages compatibility
-        const baseUrl = getBaseUrl();
-        const filePath = `${baseUrl}${componentName}.html`;
+        const filePath = `${componentName}.html`;
         
         try {
             const response = await fetch(filePath);
@@ -31,7 +28,6 @@ async function loadComponents() {
             // If it's a header, check for current page to add active class
             if (componentName === 'header') {
                 highlightCurrentPage();
-                setupMobileMenu();
             }
             
             // Initialize any scripts the component might need
@@ -41,32 +37,6 @@ async function loadComponents() {
             element.innerHTML = `<div class="component-error">Failed to load ${componentName} component</div>`;
         }
     }
-}
-
-/**
- * Gets the base URL for the current environment (local or GitHub Pages)
- */
-function getBaseUrl() {
-    // Get the current URL
-    const url = window.location.href;
-    
-    // Check if running on GitHub Pages
-    if (url.includes('github.io')) {
-        // Extract the repository name from the URL
-        const pathSegments = url.split('/');
-        // Finding the segment after github.io
-        const githubIoIndex = pathSegments.findIndex(segment => segment.includes('github.io'));
-        
-        if (githubIoIndex !== -1 && pathSegments.length > githubIoIndex + 1) {
-            // Repository is the next segment after github.io
-            const repoName = pathSegments[githubIoIndex + 1];
-            return `/${repoName}/`;
-        }
-        return '/'; // Fallback
-    }
-    
-    // Local development - return empty string for relative path
-    return '';
 }
 
 /**
@@ -96,36 +66,21 @@ function highlightCurrentPage() {
 }
 
 /**
- * Sets up the mobile menu functionality
- */
-function setupMobileMenu() {
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    
-    if (menuBtn && mobileMenu) {
-        // Toggle menu on button click
-        menuBtn.addEventListener('click', function() {
-            mobileMenu.classList.toggle('active');
-            menuBtn.classList.toggle('active');
-        });
-        
-        // Close menu when a link is clicked
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                // Close menu immediately
-                mobileMenu.classList.remove('active');
-                menuBtn.classList.remove('active');
-            });
-        });
-    }
-}
-
-/**
  * Initialize any scripts needed by specific components
  */
 function initComponentScripts(componentName) {
     if (componentName === 'header') {
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                menuBtn.classList.toggle('active');
+            });
+        }
+        
         // Sticky Navbar
         const navbar = document.getElementById('navbar');
         let lastScrollTop = 0;
