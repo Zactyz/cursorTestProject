@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-common.css">
     <link rel="icon" href="images/no background2.png" type="image/png">
     <style>
         .hero.support-hero {
@@ -366,50 +367,11 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="images/no background2.png" alt="Ciple Logo">
-                <span>Ciple</span>
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <div class="dropdown">
-                    <a href="index.html#transform" class="dropdown-toggle">Features <i class="fas fa-chevron-down"></i></a>
-                    <div class="dropdown-menu">
-                        <a href="index.html#studies">Bible Studies</a>
-                        <a href="index.html#prayer">Prayer Wall</a>
-                        <a href="index.html#encouragement">Daily Encouragement</a>
-                    </div>
-                </div>
-                <a href="index.html#nonprofit">Always Free</a>
-                <a href="support.html" class="active">Support</a>
-                <a href="about.html">About</a>
-                <a href="church.html">For Churches</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <a href="https://ciple.glide.page" class="nav-cta">Get Started for Free</a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        <div class="mobile-menu" id="mobile-menu">
-            <a href="index.html">Home</a>
-            <a href="index.html#transform">Features</a>
-            <a href="index.html#studies">Bible Studies</a>
-            <a href="index.html#prayer">Prayer Wall</a>
-            <a href="index.html#encouragement">Daily Encouragement</a>
-            <a href="index.html#nonprofit">Always Free</a>
-            <a href="support.html" class="active">Support</a>
-            <a href="about.html">About</a>
-            <a href="church.html">For Churches</a>
-            <a href="contact.html">Contact</a>
-            <a href="https://ciple.glide.page" class="mobile-cta">Get Started for Free</a>
-        </div>
-    </nav>
+    <!-- Header Component -->
+    <div data-component="header"></div>
 
     <!-- Hero Section -->
+    <main>
     <section class="hero support-hero">
         <div class="section-container">
             <div class="hero-content">
@@ -611,7 +573,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="download" id="impact-cta">
+    <section class="cta-section">
         <div class="download-shapes">
             <div class="shape shape-1"></div>
             <div class="shape shape-2"></div>
@@ -644,59 +606,14 @@
             </div>
         </div>
     </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="section-container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo">
-                        <img src="images/no background2.png" alt="Ciple Logo">
-                        <span>Ciple</span>
-                    </a>
-                    <p>AI-powered discipleship tools for your faith journey.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <div class="link-column">
-                        <h4>Features</h4>
-                        <a href="index.html#studies">Bible Studies</a>
-                        <a href="index.html#prayer">Prayer Wall</a>
-                        <a href="index.html#encouragement">Daily Encouragement</a>
-                        <a href="church.html">For Churches</a>
-                        <a href="support.html">Community</a>
-                    </div>
-                    <div class="link-column">
-                        <h4>Company</h4>
-                        <a href="about.html">About Us</a>
-                        <a href="support.html">Our Mission</a>
-                        <a href="contact.html">Contact</a>
-                        <a href="support.html#donate">Donate</a>
-                        <a href="support.html#partner">Partner With Us</a>
-                    </div>
-                </div>
-                <div class="subscribe-form">
-                    <h4>Subscribe to Updates</h4>
-                    <p>Stay updated with the latest features and news.</p>
-                    <form>
-                        <input type="email" placeholder="Your email address">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Ciple. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Component -->
+    <div data-component="footer"></div>
 
-    <!-- Load our custom component system -->
+    <!-- Scripts -->
     <script src="js/components.js"></script>
+    <script src="js/spa.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

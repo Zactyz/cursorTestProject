@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-common.css">
     <link rel="icon" href="images/no background2.png" type="image/png">
     <style>
         .church-hero {
@@ -490,9 +491,10 @@
     </style>
 </head>
 <body>
-    <!-- Navigation - Using component -->
+    <!-- Header Component -->
     <div data-component="header"></div>
 
+    <main>
     <!-- Hero Section -->
     <section class="church-hero">
         <div class="section-container">
@@ -790,12 +792,15 @@
             </div>
         </div>
     </section>
+    </main>
 
-    <!-- Footer - Using component -->
+    <!-- Footer Component -->
     <div data-component="footer"></div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- Scripts -->
     <script src="js/components.js"></script>
+    <script src="js/spa.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html> 

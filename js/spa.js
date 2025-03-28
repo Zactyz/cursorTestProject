@@ -13,10 +13,34 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
+ * Detect if the site is running on GitHub Pages
+ * @returns {boolean} - True if running on GitHub Pages
+ */
+function isGitHubPages() {
+    return window.location.hostname.includes('github.io');
+}
+
+/**
+ * Get the base path for the site (e.g., '/repo-name' on GitHub Pages)
+ * @returns {string} - Base path with leading slash, or empty string if at root
+ */
+function getBasePath() {
+    if (isGitHubPages()) {
+        const pathSegments = window.location.pathname.split('/');
+        // For GitHub Pages, the first segment after the domain is the repo name
+        if (pathSegments.length > 1 && pathSegments[1]) {
+            return '/' + pathSegments[1];
+        }
+    }
+    return '';
+}
+
+/**
  * Initialize Single Page Application functionality
  */
 function initSPA() {
     console.log('Initializing SPA functionality');
+    console.log(`Environment: GitHub Pages = ${isGitHubPages()}, Base path = ${getBasePath()}`);
     
     // Get the main content container
     const contentContainer = document.querySelector('main') || document.createElement('main');
@@ -64,7 +88,7 @@ function initSPA() {
         if (url === '/' || (url.startsWith('/') && url.length === 1)) {
             e.preventDefault();
             console.log('Home page link clicked, navigating to index.html');
-            navigateTo('index.html', true, '/');
+            navigateTo('index.html', true, `${getBasePath()}/`);
             return;
         }
         
@@ -73,7 +97,7 @@ function initSPA() {
             e.preventDefault();
             console.log(`Home page section link clicked: ${url}`);
             const hash = url.substring(2); // Remove /# to get the anchor name
-            navigateTo('index.html', true, '/', hash);
+            navigateTo('index.html', true, `${getBasePath()}/`, hash);
             return;
         }
 
@@ -111,16 +135,22 @@ function initSPA() {
             if (fetchUrl === '/index') {
                 fetchUrl = 'index.html';
                 console.log('Index page requested, navigating with clean URL');
-                navigateTo(fetchUrl, true, '/', hash);
+                navigateTo(fetchUrl, true, `${getBasePath()}/`, hash);
                 return;
             }
             // Strip leading slash for the fetch
             fetchUrl = fetchUrl.substring(1) + '.html';
         }
         
-        console.log(`Navigating to ${fetchUrl} with display URL ${url}`);
+        // Prepare display URL with correct base path for GitHub Pages
+        let displayUrl = url;
+        if (isGitHubPages() && !url.startsWith(getBasePath()) && url.startsWith('/')) {
+            displayUrl = getBasePath() + url;
+        }
+        
+        console.log(`Navigating to ${fetchUrl} with display URL ${displayUrl}`);
         // Load the new content
-        navigateTo(fetchUrl, true, url, hash);
+        navigateTo(fetchUrl, true, displayUrl, hash);
     });
     
     // Handle browser back/forward buttons
@@ -188,17 +218,17 @@ async function navigateTo(fetchUrl, pushState = true, displayUrl = null, hash = 
         
         // Handle displaying URL
         if (!displayUrl) {
-            displayUrl = '/' + fetchUrl.replace('.html', '');
+            displayUrl = getBasePath() + '/' + fetchUrl.replace('.html', '');
             // Special case to prevent /index
-            if (displayUrl === '/index') {
-                displayUrl = '/';
+            if (displayUrl.endsWith('/index')) {
+                displayUrl = displayUrl.replace('/index', '/');
             }
             console.log(`No display URL provided, using: ${displayUrl}`);
         }
         
         // Handle index special case
         if (fetchUrl === 'index.html') {
-            displayUrl = '/';
+            displayUrl = getBasePath() + '/';
         }
         
         // Add hash to display URL if provided
@@ -210,30 +240,50 @@ async function navigateTo(fetchUrl, pushState = true, displayUrl = null, hash = 
         // Fetch the new page content
         console.log(`Fetching content from: ${fetchUrl}`);
         
-        // Try with both relative and absolute paths
-        let response;
-        try {
-            response = await fetch(fetchUrl);
-            if (!response.ok) {
-                throw new Error(`Failed with relative path: ${fetchUrl}`);
-            }
-        } catch (error) {
-            console.warn(`Fetch failed with relative path: ${error.message}`);
-            // Try with absolute path
-            const absoluteUrl = fetchUrl.startsWith('/') ? fetchUrl : `/${fetchUrl}`;
-            console.log(`Trying with absolute path: ${absoluteUrl}`);
+        // List of paths to try
+        const pathsToTry = [];
+        
+        // Standard relative path
+        pathsToTry.push(fetchUrl);
+        
+        // Absolute path
+        pathsToTry.push(`/${fetchUrl}`);
+        
+        // GitHub Pages specific paths
+        if (isGitHubPages()) {
+            const basePath = getBasePath();
+            pathsToTry.push(`${basePath}/${fetchUrl}`);
             
-            try {
-                response = await fetch(absoluteUrl);
-                if (!response.ok) {
-                    throw new Error(`Failed with absolute path: ${absoluteUrl}`);
-                }
-            } catch (secondError) {
-                throw new Error(`Failed to fetch page: ${fetchUrl} - ${secondError.message}`);
+            // GitHub Pages sometimes requires the .html extension explicitly
+            if (!fetchUrl.endsWith('.html')) {
+                pathsToTry.push(`${basePath}/${fetchUrl}.html`);
             }
         }
         
-        console.log('Fetch successful, parsing content');
+        // Try with both relative and absolute paths
+        let response = null;
+        let successPath = '';
+        
+        for (const path of pathsToTry) {
+            try {
+                console.log(`Trying path: ${path}`);
+                const pathResponse = await fetch(path);
+                if (pathResponse.ok) {
+                    response = pathResponse;
+                    successPath = path;
+                    console.log(`Successful fetch with path: ${path}`);
+                    break;
+                }
+            } catch (error) {
+                console.warn(`Fetch failed for path ${path}: ${error.message}`);
+            }
+        }
+        
+        if (!response) {
+            throw new Error(`Failed to fetch page: ${fetchUrl} - Tried paths: ${pathsToTry.join(', ')}`);
+        }
+        
+        console.log(`Fetch successful with path: ${successPath}, parsing content`);
         const html = await response.text();
         const parser = new DOMParser();
         const doc = parser.parseFromString(html, 'text/html');

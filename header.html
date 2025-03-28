@@ -40,6 +40,34 @@
     </div>
 </nav>
 
+<script>
+// Add dynamic base path to all internal links
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof isGitHubPages === 'function' && typeof getBasePath === 'function') {
+        if (isGitHubPages() && getBasePath()) {
+            const basePath = getBasePath();
+            const internalLinks = document.querySelectorAll('nav a:not([href^="http"]):not([href^="https"]):not([href^="#"])');
+            
+            internalLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                
+                // Only process links that start with / and don't already have the base path
+                if (href && href.startsWith('/') && !href.startsWith(basePath)) {
+                    // Handle anchor links on home page specially
+                    if (href.startsWith('/#')) {
+                        link.setAttribute('href', `${basePath}/${href.substring(1)}`);
+                    } else {
+                        link.setAttribute('href', `${basePath}${href}`);
+                    }
+                }
+            });
+            
+            console.log('Updated header navigation links with base path:', basePath);
+        }
+    }
+});
+</script>
+
 <!-- HOW TO USE THIS TEMPLATE:
 1. Include this file using server-side includes if your server supports it:
    Example with PHP: include '_header.html';

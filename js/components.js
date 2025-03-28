@@ -9,29 +9,45 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 async function loadComponents() {
     const componentElements = document.querySelectorAll('[data-component]');
+    const isGitHubPages = window.location.hostname.includes('github.io');
+    console.log(`Environment detection: GitHub Pages = ${isGitHubPages}`);
     
     for (const element of componentElements) {
         const componentName = element.getAttribute('data-component');
         console.log(`Loading component: ${componentName}`);
         
-        // Try multiple path options for better compatibility with different server setups
-        let filePath = `${componentName}.html`; // Relative path first
-        console.log(`Trying path: ${filePath}`);
-        let response = await tryFetch(filePath);
+        // Determine if we're on GitHub Pages to adjust paths accordingly
+        let pathsToTry = [];
         
-        // If relative path fails, try absolute path
-        if (!response) {
-            filePath = `/${componentName}.html`;
-            console.log(`Trying path: ${filePath}`);
-            response = await tryFetch(filePath);
+        // Always start with the standard relative path
+        pathsToTry.push(`${componentName}.html`);
+        
+        // On GitHub Pages, we may need the full path with .html
+        if (isGitHubPages) {
+            // Get repository name for GitHub Pages
+            const pathSegments = window.location.pathname.split('/');
+            const repoBase = pathSegments.length > 1 ? `/${pathSegments[1]}` : '';
+            
+            pathsToTry.push(`${repoBase}/${componentName}.html`);
+            pathsToTry.push(`${window.location.pathname}/${componentName}.html`);
+            pathsToTry.push(`${window.location.origin}${repoBase}/${componentName}.html`);
         }
         
-        // If still fails, try from base directory path
-        if (!response) {
-            const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
-            filePath = `${basePath}/${componentName}.html`;
-            console.log(`Trying path: ${filePath}`);
-            response = await tryFetch(filePath);
+        // Add other path variations
+        pathsToTry.push(`/${componentName}.html`);
+        
+        const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
+        pathsToTry.push(`${basePath}/${componentName}.html`);
+        
+        // Try all paths until one works
+        let response = null;
+        for (const path of pathsToTry) {
+            console.log(`Trying path: ${path}`);
+            response = await tryFetch(path);
+            if (response) {
+                console.log(`Success with path: ${path}`);
+                break;
+            }
         }
         
         if (response) {
@@ -60,7 +76,7 @@ async function loadComponents() {
                 element.innerHTML = `<div class="component-error">Failed to process ${componentName} component: ${error.message}</div>`;
             }
         } else {
-            console.error(`Failed to load component: ${componentName} - File not found in any location`);
+            console.error(`Failed to load component: ${componentName} - File not found in any location after trying: ${pathsToTry.join(', ')}`);
             element.innerHTML = `<div class="component-error">Failed to load ${componentName} component</div>`;
         }
     }

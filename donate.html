@@ -231,9 +231,10 @@
     </style>
 </head>
 <body>
-    <!-- Navigation - Using component system -->
+    <!-- Header Component -->
     <div data-component="header"></div>
 
+    <main>
     <!-- Hero Section -->
     <section class="donate-hero">
         <div class="section-container">
@@ -403,17 +404,19 @@
                 <p>Your support helps believers around the world grow in their faith journey.</p>
                 <div class="hero-buttons" style="margin-top: 2rem;">
                     <a href="#custom-donate" class="cta-button">Make a Donation</a>
-                    <a href="partner.html" class="secondary-cta">Explore Partnership Options</a>
+                    <a href="/partner" class="secondary-cta">Explore Partnership Options</a>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
-    <!-- Footer - Using component system -->
+    <!-- Footer Component -->
     <div data-component="footer"></div>
 
-    <!-- Load our custom component system -->
+    <!-- Scripts -->
     <script src="js/components.js"></script>
+    <script src="js/spa.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/main.js"></script>
     <script>

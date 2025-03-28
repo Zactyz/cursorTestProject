@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-common.css">
     <link rel="icon" href="images/no background2.png" type="image/png">
     <style>
         .partner-hero {
@@ -216,44 +217,15 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-content">
-            <a href="index.html" class="logo">
-                <img src="images/no background2.png" alt="Ciple Logo">
-                <span>Ciple</span>
-            </a>
-            <div class="nav-links">
-                <a href="index.html#transform">Features</a>
-                <a href="index.html#studies">Bible Studies</a>
-                <a href="index.html#prayer">Prayer Wall</a>
-                <a href="index.html#encouragement">Daily Encouragement</a>
-                <a href="about.html">About</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <a href="https://ciple.glide.page" class="nav-cta">Get Started for Free</a>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-        <div class="mobile-menu" id="mobile-menu">
-            <a href="index.html#transform">Features</a>
-            <a href="index.html#studies">Bible Studies</a>
-            <a href="index.html#prayer">Prayer Wall</a>
-            <a href="index.html#encouragement">Daily Encouragement</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="https://ciple.glide.page" class="mobile-cta">Get Started for Free</a>
-        </div>
-    </nav>
+    <!-- Header Component -->
+    <div data-component="header"></div>
 
+    <main>
     <!-- Hero Section -->
     <section class="partner-hero">
         <div class="section-container">
-            <div class="section-header" data-aos="fade-up">
-                <h1 style="font-size: 3rem; margin-bottom: 1.5rem; color: var(--primary-dark);">Partner with Ciple</h1>
-                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Join our mission to make discipleship tools accessible to everyone around the world. Together, we can help more believers grow in their faith journey.</p>
-            </div>
+            <h1 data-aos="fade-up">Become a Partner</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Join us in our mission to empower believers with AI-driven discipleship tools.</p>
         </div>
     </section>
 
@@ -442,70 +414,20 @@
                 <h2>Ready to Make an Impact?</h2>
                 <p>Join us in our mission to empower believers worldwide with accessible, AI-powered discipleship tools.</p>
                 <div class="hero-buttons" style="margin-top: 2rem;">
-                    <a href="contact.html" class="cta-button">Contact Us to Partner</a>
-                    <a href="donate.html" class="secondary-cta">Support Our Mission</a>
+                    <a href="/contact" class="cta-button">Contact Us to Partner</a>
+                    <a href="/donate" class="secondary-cta">Support Our Mission</a>
                 </div>
             </div>
         </div>
     </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="section-container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <a href="index.html" class="footer-logo">
-                        <img src="images/no background2.png" alt="Ciple Logo">
-                        <span>Ciple</span>
-                    </a>
-                    <p>AI-powered discipleship tools for your faith journey.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <div class="link-column">
-                        <h4>Features</h4>
-                        <a href="index.html#studies">Bible Studies</a>
-                        <a href="index.html#prayer">Prayer Wall</a>
-                        <a href="index.html#encouragement">Daily Encouragement</a>
-                        <a href="features.html">All Features</a>
-                    </div>
-                    <div class="link-column">
-                        <h4>Company</h4>
-                        <a href="about.html">About Us</a>
-                        <a href="mission.html">Our Mission</a>
-                        <a href="team.html">Team</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
-                    <div class="link-column">
-                        <h4>Resources</h4>
-                        <a href="blog.html">Blog</a>
-                        <a href="faq.html">FAQ</a>
-                        <a href="privacy.html">Privacy Policy</a>
-                        <a href="terms.html">Terms of Service</a>
-                    </div>
-                </div>
-                <div class="subscribe-form">
-                    <h4>Subscribe to Updates</h4>
-                    <p>Stay updated with the latest features and news.</p>
-                    <form>
-                        <input type="email" placeholder="Your email address">
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Ciple. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Component -->
+    <div data-component="footer"></div>
 
-    <!-- Load our custom component system -->
+    <!-- Scripts -->
     <script src="js/components.js"></script>
+    <script src="js/spa.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
