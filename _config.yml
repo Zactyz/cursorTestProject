@@ -1,0 +1,14 @@
+permalink: pretty
+plugins:
+  - jekyll-redirect-from
+  
+# URLs will be cleaner (no .html extension)
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      permalink: /:basename/
+      
+# Custom 404 page
+page_not_found: "/404.html" 

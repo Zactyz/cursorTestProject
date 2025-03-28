@@ -12,57 +12,76 @@ async function loadComponents() {
     
     for (const element of componentElements) {
         const componentName = element.getAttribute('data-component');
-        const filePath = `${componentName}.html`;
+        console.log(`Loading component: ${componentName}`);
         
-        try {
-            const response = await fetch(filePath);
-            if (!response.ok) {
-                throw new Error(`Failed to load component: ${componentName}`);
+        // Try multiple path options for better compatibility with different server setups
+        let filePath = `${componentName}.html`; // Relative path first
+        console.log(`Trying path: ${filePath}`);
+        let response = await tryFetch(filePath);
+        
+        // If relative path fails, try absolute path
+        if (!response) {
+            filePath = `/${componentName}.html`;
+            console.log(`Trying path: ${filePath}`);
+            response = await tryFetch(filePath);
+        }
+        
+        // If still fails, try from base directory path
+        if (!response) {
+            const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
+            filePath = `${basePath}/${componentName}.html`;
+            console.log(`Trying path: ${filePath}`);
+            response = await tryFetch(filePath);
+        }
+        
+        if (response) {
+            try {
+                console.log(`Component ${componentName} found, processing content...`);
+                const html = await response.text();
+                console.log(`Content length: ${html.length} characters`);
+                
+                // Add the component HTML 
+                element.innerHTML = html;
+                console.log(`Component ${componentName} HTML injected`);
+                
+                // If it's a header, check for current page to add active class
+                if (componentName === 'header') {
+                    console.log('Component navigation ready');
+                    // Don't call highlightCurrentPage here - SPA.js will handle this
+                }
+                
+                // Initialize any scripts the component might need
+                console.log(`Initializing scripts for ${componentName}`);
+                initComponentScripts(componentName);
+                console.log(`${componentName} component loaded successfully`);
+            } catch (error) {
+                console.error(`Error processing ${componentName} component:`, error);
+                console.error('Stack trace:', error.stack);
+                element.innerHTML = `<div class="component-error">Failed to process ${componentName} component: ${error.message}</div>`;
             }
-            
-            const html = await response.text();
-            
-            // Add the component HTML 
-            element.innerHTML = html;
-            
-            // If it's a header, check for current page to add active class
-            if (componentName === 'header') {
-                highlightCurrentPage();
-            }
-            
-            // Initialize any scripts the component might need
-            initComponentScripts(componentName);
-        } catch (error) {
-            console.error(error);
+        } else {
+            console.error(`Failed to load component: ${componentName} - File not found in any location`);
             element.innerHTML = `<div class="component-error">Failed to load ${componentName} component</div>`;
         }
     }
 }
 
 /**
- * Highlights the current page in the navigation
+ * Try to fetch a resource and return the response if successful
+ * @param {string} url - URL to fetch
+ * @returns {Response|null} - Response object or null if failed
  */
-function highlightCurrentPage() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-    
-    // For both desktop and mobile navigation
-    const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
-    
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        
-        // Only highlight non-fragment links or exact page matches
-        if (href === currentPage || 
-            (currentPage === 'index.html' && href === 'index.html')) {
-            link.classList.add('active');
+async function tryFetch(url) {
+    try {
+        const response = await fetch(url);
+        if (response.ok) {
+            return response;
         }
-        
-        // Don't highlight links with fragments (#) for the current page
-        // This prevents "Features" and "Always Free" from being highlighted on the home page
-        if (href.includes('#') && href.split('#')[0] === currentPage) {
-            link.classList.remove('active');
-        }
-    });
+        return null;
+    } catch (error) {
+        console.error(`Fetch error for ${url}:`, error);
+        return null;
+    }
 }
 
 /**

@@ -126,19 +126,21 @@ img {
 .secondary-cta, .secondary-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background-color: var(--white);
+    background-color: transparent;
     color: var(--primary-purple);
     font-weight: 600;
     border-radius: 50px;
     transition: var(--transition);
     text-align: center;
-    border: 2px solid var(--light-purple);
+    border: 2px solid var(--primary-purple);
     cursor: pointer;
 }
 
 .secondary-cta:hover {
-    background-color: var(--light-purple);
+    background-color: rgba(103, 45, 144, 0.1);
     transform: translateY(-3px);
+    border-color: var(--purple-light);
+    color: var(--purple-light);
 }
 
 /* Toast messages */
@@ -214,5 +216,54 @@ img {
 @media (max-width: 576px) {
     .section-container {
         padding: 0 1.5rem;
+    }
+}
+
+/* Main content container styles - added for SPA functionality */
+main {
+    width: 100%;
+    min-height: 50vh;
+    display: block;
+    position: relative;
+}
+
+/* Ensure proper spacing for all pages */
+main > section:first-child {
+    padding-top: 8rem;
+}
+
+/* Page transitions */
+main {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+main.loading {
+    opacity: 0.7;
+}
+
+/* Loading spinner and indicator */
+#spa-loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #4a6cf7, transparent);
+    z-index: 9999;
+    animation: spa-loading-pulse 1.5s infinite ease-in-out;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes spa-loading-pulse {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    main > section:first-child {
+        padding-top: 6rem;
     }
 } 

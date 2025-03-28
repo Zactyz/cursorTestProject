@@ -15,6 +15,7 @@
     <!-- Navigation - Using component -->
     <div data-component="header"></div>
 
+    <main>
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
@@ -362,6 +363,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer - Using component -->
     <div data-component="footer"></div>
@@ -497,8 +499,11 @@
         }
     </style>
 
+    <!-- Load JavaScript -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>AOS.init({duration: 800, once: true});</script>
     <script src="js/components.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/spa.js"></script>
 </body>
 </html> 
