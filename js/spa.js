@@ -88,6 +88,15 @@ function initSPA() {
         if (url === '/' || (url.startsWith('/') && url.length === 1)) {
             e.preventDefault();
             console.log('Home page link clicked, navigating to index.html');
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                if (menuBtn) menuBtn.classList.remove('active');
+            }
+            
             navigateTo('index.html', true, `${getBasePath()}/`);
             return;
         }
@@ -97,6 +106,15 @@ function initSPA() {
             e.preventDefault();
             console.log(`Home page section link clicked: ${url}`);
             const hash = url.substring(2); // Remove /# to get the anchor name
+            
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            if (mobileMenu && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+                if (menuBtn) menuBtn.classList.remove('active');
+            }
+            
             navigateTo('index.html', true, `${getBasePath()}/`, hash);
             return;
         }
